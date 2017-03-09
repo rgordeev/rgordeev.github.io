@@ -1,0 +1,8 @@
+title: АДМИНИСТРИРОВАНИЕ POSTGRESQL
+description: Материалы курса по PostgreSQL от компании Postgres Professional
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-slate
+
+gems:
+  - jekyll-mentions
