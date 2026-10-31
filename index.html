@@ -4,110 +4,83 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="theme-color" content="#f5f2ec">
-  <meta name="description" content="Личный журнал Романа Гордеева: подробные планы и разборы. Первая запись — программа жима лёжа на 12 недель, от максимума 90 кг к попытке 100 кг.">
+  <meta name="theme-color" content="#f7f8fa">
+  <meta name="description" content="Личный журнал Романа Гордеева. Первая запись — программа жима лёжа на 12 недель. Читать с начала или сразу открыть нужную неделю тренировок.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:site_name" content="Роман Гордеев">
   <meta property="og:title" content="Роман Гордеев — личный журнал">
-  <meta property="og:description" content="Подробные планы и разборы. Первая запись — 12 недель жима лёжа: от тяжёлых 90 кг к уверенным 90 и попытке 100 кг.">
+  <meta property="og:description" content="Подробные планы и разборы. В журнале — программа жима лёжа: от тяжёлых 90 кг к уверенным 90 и попытке 100 кг по готовности.">
   <meta property="og:url" content="https://rgordeev.github.io/">
   <link rel="canonical" href="https://rgordeev.github.io/">
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="stylesheet" href="/stylesheets/stylesheet.css">
+  <script src="/assets/journal.js" defer></script>
   <title>Роман Гордеев — личный журнал</title>
 </head>
 <body class="home-page">
-  <a class="skip-link" href="#main">Перейти к содержимому</a>
-  <div class="site-wrap">
-    <header class="site-header">
-      <a class="identity" href="/" aria-label="Роман Гордеев — главная">
-        <span class="monogram" aria-hidden="true">РГ<span>.</span></span>
-        <span class="identity-name">Роман Гордеев<span class="identity-note">Личный журнал</span></span>
+  <a class="skip-link" href="#main">Перейти к записям</a>
+  <div class="journal-shell">
+    <header class="author-rail" id="about">
+      <a class="author-identity" href="/" aria-label="Роман Гордеев — главная">
+        <span class="author-symbol" aria-hidden="true">рг<span>.</span></span>
+        <span class="author-name">Роман Гордеев</span>
       </a>
-      <nav class="site-nav" aria-label="Главная навигация">
-        <a href="#notes">Записи</a>
-        <a href="#about">Об авторе</a>
-        <a class="external-link" href="https://github.com/rgordeev">GitHub <span aria-hidden="true">↗</span></a>
+      <p class="author-caption">Личный журнал</p>
+      <p class="author-intro">Записи, планы и разборы, к которым можно вернуться.</p>
+      <a class="mobile-quick-link" href="#week-picker" data-open-weeks aria-label="Недели программы">Недели <span aria-hidden="true">↓</span></a>
+      <nav class="journal-nav" aria-label="Навигация сайта">
+        <a class="nav-current" href="#main" aria-current="page"><span>Записи</span><span class="nav-dot" aria-hidden="true"></span></a>
+        <a href="#week-picker" data-open-weeks><span>Быстрый доступ</span><span aria-hidden="true">↓</span></a>
       </nav>
+      <a class="author-github" href="https://github.com/rgordeev"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1a11 11 0 0 0-3.48 21.44c.55.1.75-.24.75-.53v-2.05c-3.06.67-3.71-1.3-3.71-1.3-.5-1.27-1.22-1.61-1.22-1.61-1-.68.08-.67.08-.67 1.1.08 1.68 1.13 1.68 1.13.98 1.68 2.57 1.2 3.2.92.1-.71.39-1.2.7-1.47-2.44-.28-5.01-1.22-5.01-5.44 0-1.2.43-2.18 1.13-2.95-.11-.28-.49-1.4.11-2.91 0 0 .92-.3 3.02 1.13a10.5 10.5 0 0 1 5.5 0c2.1-1.43 3.02-1.13 3.02-1.13.6 1.51.22 2.63.11 2.91.7.77 1.13 1.75 1.13 2.95 0 4.23-2.58 5.16-5.04 5.43.4.35.75 1.02.75 2.06v3c0 .3.2.64.76.53A11 11 0 0 0 12 1Z"/></svg><span>GitHub</span><span aria-hidden="true">↗</span></a>
+      <p class="rail-colophon">rgordeev.github.io</p>
     </header>
 
-    <main id="main" tabindex="-1">
-      <section class="intro" aria-labelledby="intro-title">
-        <div class="intro-topline">
-          <p class="eyebrow"><span class="small-dot" aria-hidden="true"></span>Личный журнал</p>
-          <p class="intro-caption">Заметки / Планы / Разборы</p>
-        </div>
-        <h1 id="intro-title">Роман <em>Гордеев</em><span class="accent">.</span></h1>
-        <div class="intro-bottom">
-          <p class="intro-description">Здесь публикую подробные планы и разборы. Начинаю с тренировок: первый материал — о том, как распределить нагрузку на 12 недель и подготовиться к более тяжёлому жиму.</p>
-          <a class="jump-link" href="#notes"><span>К первой записи</span><span class="round-arrow" aria-hidden="true">↓</span></a>
-        </div>
-      </section>
-
-      <section class="notes" id="notes" aria-labelledby="notes-title">
-        <div class="section-heading">
-          <div class="section-title"><h2 id="notes-title">Записи</h2><span class="count" aria-label="1 запись">01</span></div>
-          <p class="section-caption">Первая публикация</p>
-        </div>
-        <article class="feature" aria-labelledby="post-title">
-          <div class="feature-link">
-            <div class="feature-cover" aria-hidden="true">
-              <div class="cover-top"><span>Жим лёжа</span><span>Запись № 001</span></div>
-              <div class="cover-art">
-                <div class="cover-rings"><i></i><i></i><i></i></div>
-                <div class="cover-numbers"><span class="start-weight">90</span><span class="weight-arrow">→</span><span class="target-weight">100</span></div>
-                <span class="cover-unit">килограммов</span>
-              </div>
-              <div class="cover-bottom"><span>От тяжёлого максимума<br>к уверенному движению</span><span class="cover-period"><strong>12</strong><span>недель</span></span></div>
-            </div>
-            <div class="feature-copy">
-              <p class="post-meta"><span class="category">Тренировки</span><span class="post-format">Подробная программа</span></p>
-              <h3 id="post-title"><a class="feature-title-link" href="/publish/bench-press-90-to-100.html">Жим лёжа: <span class="nowrap">12 недель</span><br>к попытке <span class="nowrap">100 кг</span></a></h3>
-              <p class="post-description">План для старта с максимума 90&nbsp;кг: веса на каждый подход, разминка и правила изменения нагрузки. Основная цель — уверенный одиночный подъём 90&nbsp;кг; попытка 100&nbsp;кг зависит от готовности.</p>
-              <dl class="post-facts">
-                <div><dt>недель</dt><dd>12</dd></div>
-                <div><dt>жимовых дня в неделю</dt><dd>2</dd></div>
-                <div><dt>волны нагрузки</dt><dd>3</dd></div>
-              </dl>
-              <a class="button-link" href="/publish/bench-press-90-to-100.html">Открыть программу <span aria-hidden="true">↗</span></a>
-            </div>
+    <main class="journal-main" id="main" tabindex="-1">
+      <div class="journal-topline" id="notes"><h1>Записи</h1><span class="publication-count">1 публикация</span></div>
+      <article class="entry" aria-labelledby="entry-title">
+        <div class="entry-feature">
+          <div class="entry-meta"><span class="entry-category">Тренировки</span><span class="entry-kind">Программа</span><span class="entry-number">№ 001</span></div>
+          <h2 id="entry-title"><a class="entry-title-link" href="/publish/bench-press-90-to-100.html">Жим лёжа: 12&nbsp;недель к попытке <span class="headline-accent">100&nbsp;кг</span></a></h2>
+          <p class="entry-deck">План для старта с максимума 90&nbsp;кг. Два жимовых дня в неделю, веса на каждый подход и правила изменения нагрузки.</p>
+          <div class="entry-actions">
+            <a class="primary-action" href="/publish/bench-press-90-to-100.html"><span>Читать программу</span><span aria-hidden="true">→</span></a>
+            <a class="secondary-action" href="/publish/bench-press-90-to-100.html#s0">Обзор всех недель <span aria-hidden="true">→</span></a>
           </div>
-          <div class="reading-paths">
-            <h4 class="paths-heading">Внутри программы<span aria-hidden="true">↳</span></h4>
-            <div class="path-list">
-              <a class="path" href="/publish/bench-press-90-to-100.html#s0">
-                <span class="path-number" aria-hidden="true">01</span>
-                <span class="path-body"><span class="path-title">План по неделям</span><span class="path-description">Все 12 недель: оба жимовых дня, веса и задача каждой недели.</span></span>
-                <span class="path-arrow" aria-hidden="true">↗</span>
-              </a>
-              <a class="path" href="/publish/bench-press-90-to-100.html#s13">
-                <span class="path-number" aria-hidden="true">02</span>
-                <span class="path-body"><span class="path-title">Как менять нагрузку</span><span class="path-description">Когда прибавлять вес, повторять неделю или снижать нагрузку.</span></span>
-                <span class="path-arrow" aria-hidden="true">↗</span>
-              </a>
-              <a class="path" href="/publish/bench-press-90-to-100.html#s15">
-                <span class="path-number" aria-hidden="true">03</span>
-                <span class="path-body"><span class="path-title">Техника упражнений</span><span class="path-description">Постановка, движение и частые ошибки в жимовых упражнениях.</span></span>
-                <span class="path-arrow" aria-hidden="true">↗</span>
-              </a>
-            </div>
-          </div>
-        </article>
-      </section>
+          <div class="entry-goal"><span class="goal-label">Задача цикла</span><p>Сначала — уверенные 90&nbsp;кг.<br>Попытка 100&nbsp;кг — по готовности.</p></div>
+          <div class="entry-footnote"><span>12 недель</span><span>2 жимовых дня</span><span>3 волны нагрузки</span></div>
+        </div>
 
-      <section class="author" id="about" aria-labelledby="author-title">
-        <div class="author-heading"><span class="author-mark" aria-hidden="true">рг.</span><div><p class="eyebrow">Автор журнала</p><h2 id="author-title">Роман Гордеев</h2></div></div>
-        <p class="author-copy">Продолжить знакомство можно на GitHub — там мой профиль и репозитории.</p>
-        <a class="profile-link" href="https://github.com/rgordeev"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 1a11 11 0 0 0-3.48 21.44c.55.1.75-.24.75-.53v-2.05c-3.06.67-3.71-1.3-3.71-1.3-.5-1.27-1.22-1.61-1.22-1.61-1-.68.08-.67.08-.67 1.1.08 1.68 1.13 1.68 1.13.98 1.68 2.57 1.2 3.2.92.1-.71.39-1.2.7-1.47-2.44-.28-5.01-1.22-5.01-5.44 0-1.2.43-2.18 1.13-2.95-.11-.28-.49-1.4.11-2.91 0 0 .92-.3 3.02 1.13a10.5 10.5 0 0 1 5.5 0c2.1-1.43 3.02-1.13 3.02-1.13.6 1.51.22 2.63.11 2.91.7.77 1.13 1.75 1.13 2.95 0 4.23-2.58 5.16-5.04 5.43.4.35.75 1.02.75 2.06v3c0 .3.2.64.76.53A11 11 0 0 0 12 1Z"/></svg><span>rgordeev</span><span aria-hidden="true">↗</span></a>
-      </section>
+        <section class="program-access" id="program" aria-labelledby="access-title">
+          <div class="access-heading"><div><p class="section-eyebrow">Быстрый доступ</p><h3 id="access-title">Недели и правила</h3></div><span class="access-icon" aria-hidden="true">↳</span></div>
+          <p class="access-intro">Уже тренируетесь? Перейдите сразу к своей неделе или нужному правилу.</p>
+          <details class="week-picker" id="week-picker">
+            <summary><span class="picker-label"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 11h18m-13 5h2m4 0h2"/></svg>Выбрать неделю</span><span class="picker-end"><span class="picker-range">01—12</span><svg class="picker-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+            <ol class="week-grid" aria-label="12 недель программы">
+              <li><a href="/publish/bench-press-90-to-100.html#s1"><span class="week-number"><span class="visually-hidden">Неделя </span>01</span> <span class="week-name">Старт</span></a></li>
+              <li><a href="/publish/bench-press-90-to-100.html#s2"><span class="week-number"><span class="visually-hidden">Неделя </span>02</span> <span class="week-name">Объём</span></a></li>
+              <li><a href="/publish/bench-press-90-to-100.html#s3"><span class="week-number"><span class="visually-hidden">Неделя </span>03</span> <span class="week-name">Объём</span></a></li>
+              <li><a href="/publish/bench-press-90-to-100.html#s4"><span class="week-number"><span class="visually-hidden">Неделя </span>04</span> <span class="week-name">Разгрузка</span></a></li>
+              <li><a href="/publish/bench-press-90-to-100.html#s5"><span class="week-number"><span class="visually-hidden">Неделя </span>05</span> <span class="week-name">Одиночный</span></a></li>
+              <li><a href="/publish/bench-press-90-to-100.html#s6"><span class="week-number"><span class="visually-hidden">Неделя </span>06</span> <span class="week-name">Одиночный</span></a></li>
+              <li><a href="/publish/bench-press-90-to-100.html#s7"><span class="week-number"><span class="visually-hidden">Неделя </span>07</span> <span class="week-name">Одиночный</span></a></li>
+              <li><a href="/publish/bench-press-90-to-100.html#s8"><span class="week-number"><span class="visually-hidden">Неделя </span>08</span> <span class="week-name">Разгрузка</span></a></li>
+              <li><a href="/publish/bench-press-90-to-100.html#s9"><span class="week-number"><span class="visually-hidden">Неделя </span>09</span> <span class="week-name">Сила</span></a></li>
+              <li><a href="/publish/bench-press-90-to-100.html#s10"><span class="week-number"><span class="visually-hidden">Неделя </span>10</span> <span class="week-name">Сила</span></a></li>
+              <li><a href="/publish/bench-press-90-to-100.html#s11"><span class="week-number"><span class="visually-hidden">Неделя </span>11</span> <span class="week-name">Сила</span></a></li>
+              <li><a href="/publish/bench-press-90-to-100.html#s12"><span class="week-number"><span class="visually-hidden">Неделя </span>12</span> <span class="week-name">Тест</span></a></li>
+            </ol>
+          </details>
+          <div class="reference-links">
+            <a class="reference-link" href="/publish/bench-press-90-to-100.html#s13"><span class="reference-body"><span class="reference-title">Правила нагрузки</span><span class="reference-description">Когда прибавлять, повторять или снижать</span></span><span class="reference-arrow" aria-hidden="true">→</span></a>
+            <a class="reference-link" href="/publish/bench-press-90-to-100.html#s14"><span class="reference-body"><span class="reference-title">Разминка и одиночный</span><span class="reference-description">Подготовка к подходам и выбор веса</span></span><span class="reference-arrow" aria-hidden="true">→</span></a>
+            <a class="reference-link" href="/publish/bench-press-90-to-100.html#s15"><span class="reference-body"><span class="reference-title">Техника жимов</span><span class="reference-description">Постановка, движение и частые ошибки</span></span><span class="reference-arrow" aria-hidden="true">→</span></a>
+          </div>
+        </section>
+      </article>
+      <footer class="journal-footer"><span>© 2026 Роман Гордеев</span><a href="#main">Наверх <span aria-hidden="true">↑</span></a></footer>
     </main>
-
-    <footer class="site-footer">
-      <span>© 2026 Роман Гордеев</span>
-      <span class="footer-note">Личный журнал</span>
-      <a href="#main">Наверх <span aria-hidden="true">↑</span></a>
-    </footer>
   </div>
 </body>
 </html>
