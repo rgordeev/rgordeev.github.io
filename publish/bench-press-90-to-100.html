@@ -1,0 +1,1379 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="color-scheme" content="light">
+<meta name="description" content="Двенадцатинедельная программа жима лёжа с весом на каждый подход: от тяжёлых 90 кг к уверенным 90 и попытке 100 кг.">
+<title>Жим лёжа: 12 недель к попытке 100 кг</title>
+<link rel="canonical" href="https://rgordeev.github.io/publish/bench-press-90-to-100.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Жим лёжа: 12 недель к попытке 100 кг">
+<meta property="og:description" content="Двенадцатинедельная программа жима лёжа с весом на каждый подход: от тяжёлых 90 кг к уверенным 90 и попытке 100 кг.">
+<meta property="og:url" content="https://rgordeev.github.io/publish/bench-press-90-to-100.html">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Роман Гордеев">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f5c66'/%3E%3Cpath d='M9 11h14M9 16h9M9 21h14' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+/* Общий стиль схем концепта. Подключается один раз на странице и в harness для рендера.
+   Роли цвета — смысловые, а не декоративные:
+   core   — предмет концепта (система, модуль, ядро, продукт);
+   flow   — поток действий, запросы, шаги;
+   select — фокус внимания, выделение, «вот это место»;
+   ok     — результат, успех, то, что уже работает;
+   gap    — проблема, ограничение, то, чего нет.
+   Статус элемента рисуется, а не только подписывается: st-exists / st-planned / st-condition / st-open. */
+:root {
+  --ink: #14212b;
+  --muted: #5b6b78;
+  --line: #c6d0d7;
+  --paper: #ffffff;
+  --canvas: #f4f5f2;
+  --panel: #eef1f3;
+  --core: #0f5c66;
+  --core-ink: #ffffff;
+  --core-soft: #e2f0ef;
+  --client-line: #9fb2be;
+  --flow: #d47a22;
+  --flow-soft: #fcefe0;
+  --gap: #b5413a;
+  --gap-soft: #fae8e6;
+  --ok: #2d7a4c;
+  --ok-soft: #e4f2e9;
+  --select: #2f6fe0;
+  --select-soft: #e6eefc;
+  --code-bg: #101c25;
+  --code-ink: #d6e2ea;
+  --code-key: #8fd0c8;
+  --code-str: #f0b37a;
+}
+
+.fg { display: block; width: 100%; height: auto; }
+.fg text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; fill: var(--ink); }
+.fg .t-title { font-size: 22px; font-weight: 700; }
+.fg .t-label { font-size: 18px; font-weight: 650; }
+.fg .t-body { font-size: 16px; }
+.fg .t-small { font-size: 15px; fill: var(--muted); }
+.fg .t-tag { font-size: 13px; font-weight: 700; letter-spacing: .06em; }
+.fg .t-status { font-size: 13px; font-weight: 700; letter-spacing: .04em; }
+.fg .t-code { font-family: "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace; font-size: 15px; }
+.fg .t-on-core { fill: var(--core-ink); }
+.fg .t-core { fill: var(--core); }
+.fg .t-flow { fill: var(--flow); }
+.fg .t-gap { fill: var(--gap); }
+.fg .t-ok { fill: var(--ok); }
+.fg .t-select { fill: var(--select); }
+.fg .t-muted { fill: var(--muted); }
+.fg .t-code-ink { fill: var(--code-ink); }
+.fg .t-code-key { fill: var(--code-key); }
+.fg .t-code-str { fill: var(--code-str); }
+
+.fg .box { fill: var(--paper); stroke: var(--line); stroke-width: 1.5; }
+.fg .panel { fill: var(--panel); stroke: var(--line); stroke-width: 1.5; }
+.fg .zone { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 6 5; }
+.fg .core { fill: var(--core); stroke: none; }
+.fg .core-soft { fill: var(--core-soft); stroke: var(--core); stroke-width: 1.5; }
+.fg .client { fill: var(--paper); stroke: var(--client-line); stroke-width: 1.5; }
+.fg .flow-soft { fill: var(--flow-soft); stroke: var(--flow); stroke-width: 1.5; }
+.fg .gap { fill: var(--gap-soft); stroke: var(--gap); stroke-width: 1.5; }
+.fg .ok { fill: var(--ok-soft); stroke: var(--ok); stroke-width: 1.5; }
+.fg .select { fill: var(--select-soft); stroke: var(--select); stroke-width: 2; }
+.fg .code { fill: var(--code-bg); stroke: none; }
+
+/* Статусы: одна и та же сущность выглядит по-разному, если она есть, запланирована,
+   является условием (её пока нет, но без неё нельзя) или ждёт решения владельца. */
+.fg .st-exists { fill: var(--ok-soft); stroke: var(--ok); stroke-width: 1.75; }
+.fg .st-planned { fill: var(--core-soft); stroke: var(--core); stroke-width: 1.5; stroke-dasharray: 8 6; }
+.fg .st-condition { fill: var(--paper); stroke: var(--gap); stroke-width: 1.75; stroke-dasharray: 4 4; }
+.fg .st-open { fill: var(--flow-soft); stroke: var(--flow); stroke-width: 1.75; stroke-dasharray: 2 5; stroke-linecap: round; }
+
+.fg .link { stroke: var(--muted); stroke-width: 1.75; fill: none; }
+.fg .link-core { stroke: var(--core); stroke-width: 2; fill: none; }
+.fg .link-flow { stroke: var(--flow); stroke-width: 2.25; fill: none; }
+.fg .link-gap { stroke: var(--gap); stroke-width: 2; fill: none; }
+.fg .link-ok { stroke: var(--ok); stroke-width: 2; fill: none; }
+.fg .link-select { stroke: var(--select); stroke-width: 2; fill: none; }
+.fg .dash { stroke-dasharray: 6 5; }
+
+.fg .fill-core { fill: var(--core); }
+.fg .fill-flow { fill: var(--flow); }
+.fg .fill-gap { fill: var(--gap); }
+.fg .fill-ok { fill: var(--ok); }
+.fg .fill-select { fill: var(--select); }
+.fg .fill-muted { fill: var(--muted); }
+.fg .fill-line { fill: var(--line); }
+.fg .fill-panel { fill: var(--panel); }
+.fg .fill-paper { fill: var(--paper); }
+
+/* ---------- Страница: токены ---------- */
+:root {
+  --pg-ink: #14212b;
+  --pg-text: #25343f;
+  --pg-muted: #5b6b78;
+  --pg-rule: #dde5e8;
+  --pg-wash: #eef4f3;
+  --pg-tint: #f4f7f8;
+  --pg-core: #0f5c66;
+  --pg-core-deep: #0b4850;
+  --pg-core-soft: #e2f0ef;
+  --pg-flow: #ad5d10;
+  --pg-ok: #2d7a4c;
+  --pg-ok-soft: #e4f2e9;
+  --pg-focus: #2f6fe0;
+  --pg-text-w: 720px;
+  --pg-mid-w: 900px;
+  --pg-wide-w: 1100px;
+  --pg-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --pg-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 24px; }
+body {
+  margin: 0;
+  background: #ffffff;
+  color: var(--pg-text);
+  font: 17px/1.65 var(--pg-sans);
+  font-kerning: normal;
+  overflow-x: clip;
+}
+h1, h2, h3 { color: var(--pg-ink); }
+a { color: var(--pg-core); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: var(--pg-core-deep); }
+strong { font-weight: 650; color: var(--pg-ink); }
+:focus-visible { outline: 3px solid var(--pg-focus); outline-offset: 2px; border-radius: 4px; }
+main:focus { outline: none; }
+
+code {
+  font-family: var(--pg-mono);
+  font-size: .86em;
+  background: #ebf1f1;
+  color: var(--pg-core-deep);
+  padding: .08em .36em;
+  border-radius: 5px;
+  overflow-wrap: anywhere;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+.vh {
+  position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.skip {
+  position: absolute; left: 16px; top: -64px; z-index: 100;
+  background: var(--pg-ink); color: #fff; padding: 8px 14px; border-radius: 8px; text-decoration: none;
+}
+.skip:focus { top: 12px; color: #fff; }
+.ico { width: 16px; height: 16px; flex: none; }
+
+/* ---------- Каркас страницы ---------- */
+.shell { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+.article { min-width: 0; }
+
+/* Поток текста: колонка текста 720, схемы и широкие блоки до 1100 */
+.flow > * { max-width: var(--pg-text-w); margin-top: 0; margin-bottom: 0; }
+.flow > * + * { margin-top: 1.05em; }
+.flow > .mid { max-width: var(--pg-mid-w); }
+.flow > .fig, .flow > .wide { max-width: var(--pg-wide-w); }
+.flow > h3 { margin-top: 2.1em; }
+.flow > h3 + * { margin-top: .6em; }
+.flow > .quad, .flow > .uses, .flow > .trust, .flow > .steps, .flow > .stages,
+.flow > .callout, .flow > .code-block, .flow > .table-wrap, .flow > .note { margin-top: 28px; }
+.flow > .fig { margin-top: 48px; }
+.flow > .fig + * { margin-top: 40px; }
+.flow > .sec-head + * { margin-top: 26px; }
+
+/* ---------- Шапка-обложка ---------- */
+.hero { position: relative; isolation: isolate; padding: 64px 0 60px; }
+.hero::before {
+  content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%;
+  width: 100vw; transform: translateX(-50%);
+  background: var(--pg-wash);
+  border-bottom: 1px solid #d9e5e3;
+}
+.hero-meta p { margin: 0; font-size: 14px; line-height: 1.45; }
+.hero-kind { color: var(--pg-core-deep); font-weight: 650; }
+.hero-date { color: var(--pg-muted); }
+.hero h1 {
+  font-size: clamp(2.15rem, 1.1rem + 3.1vw, 3.45rem);
+  line-height: 1.06;
+  letter-spacing: -.026em;
+  font-weight: 760;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.tagline {
+  font-size: clamp(1.18rem, 1rem + .7vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--pg-core-deep);
+  font-weight: 520;
+  letter-spacing: -.008em;
+}
+.hero-main > .tagline { margin-top: 20px; }
+.hero-main > .lead { margin-top: 20px; font-size: 1.06rem; }
+.hero-main > .pitch { margin-top: 28px; }
+.hero-main > .values { margin-top: 28px; }
+
+/* Проблема · почему сейчас · что решить */
+.pitch {
+  list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid #cddcda; border-bottom: 1px solid #cddcda;
+}
+.pitch > li { padding: 16px 22px 18px 0; }
+.pitch > li + li { padding-left: 22px; border-left: 1px solid #cddcda; }
+.pitch p { margin: 0; font-size: .93rem; line-height: 1.55; color: #33434e; }
+.pitch .pitch-label {
+  margin-bottom: 4px; font-size: .76rem; line-height: 1.3; font-weight: 700;
+  letter-spacing: .05em; text-transform: uppercase; color: var(--pg-core);
+}
+.hero-main > .fig { margin-top: 36px; }
+
+.values, .quad, .trust, .uses { list-style: none; padding: 0; display: grid; gap: 14px; }
+.values { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.values > li {
+  position: relative; background: #fff; border: 1px solid #d3e0e0; border-radius: 16px;
+  padding: 22px 22px 22px;
+}
+.values > li::before {
+  content: ""; position: absolute; left: 22px; top: 0; width: 28px; height: 3px;
+  background: var(--pg-core); border-radius: 0 0 3px 3px;
+}
+.card-title { margin: 0 0 6px; font-size: 1.02rem; line-height: 1.32; font-weight: 680; color: var(--pg-ink); letter-spacing: -.004em; }
+.values p, .quad p, .trust p, .uses p { margin: 0; }
+.values > li > p:last-child { font-size: .93rem; line-height: 1.55; color: #3a4954; }
+
+/* ---------- Разделы ---------- */
+.sec { padding-top: 96px; }
+.sec-head h2 {
+  display: flex; align-items: flex-start; gap: .5em;
+  margin: 0;
+  font-size: clamp(1.55rem, 1.2rem + 1vw, 2rem);
+  line-height: 1.2; letter-spacing: -.018em; font-weight: 720;
+}
+.sec-num {
+  flex: none; display: inline-grid; place-items: center;
+  min-width: 1.42em; height: 1.42em; padding: 0 .3em; margin-top: -.05em;
+  border-radius: .32em; background: var(--pg-core); color: #fff;
+  font-size: .78em; font-weight: 700; letter-spacing: 0; font-variant-numeric: tabular-nums;
+}
+.thesis {
+  margin: 18px 0 0; font-size: 1.22rem; line-height: 1.5; font-weight: 500;
+  color: var(--pg-ink); letter-spacing: -.006em;
+}
+.flow > p, .flow li { hyphens: manual; }
+.flow h3 { font-size: 1.18rem; line-height: 1.3; font-weight: 700; letter-spacing: -.008em; }
+
+/* Списки */
+ul.plain, ul.leads { list-style: none; padding: 0; }
+ul.plain > li, ul.leads > li { position: relative; padding-left: 22px; }
+ul.plain > li::before, ul.leads > li::before {
+  content: ""; position: absolute; left: 3px; top: .68em; width: 7px; height: 7px;
+  border-radius: 2px; background: var(--pg-core);
+}
+ul.plain > li + li { margin-top: .35em; }
+ul.leads > li + li { margin-top: .7em; }
+ol.plain { padding-left: 1.4em; }
+
+/* Четыре «тех же» и точки доступа */
+.quad { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.quad > li { background: var(--pg-wash); border-radius: 14px; padding: 18px 20px 20px; }
+.quad p, .trust p { font-size: .95rem; line-height: 1.55; }
+.trust { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.trust > li { border: 1px solid var(--pg-rule); border-radius: 16px; padding: 20px 22px 22px; background: #fff; }
+.trust > li:nth-child(2) { border-style: dashed; border-color: #b9c9cf; }
+.trust > li:nth-child(3) { border-style: dashed; border-color: #e0b48c; }
+
+/* Сценарии ценности */
+.uses { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; }
+.uses > li {
+  display: flex; flex-direction: column; gap: 10px;
+  border: 1px solid var(--pg-rule); border-radius: 18px; padding: 24px 24px 22px; background: #fff;
+}
+.uses > li { grid-column: span 2; }
+.uses .card-title { font-size: 1.12rem; margin: 0; }
+.uses > li > p { font-size: .96rem; line-height: 1.58; }
+
+/* Цикл агента */
+.steps { list-style: none; padding: 0; counter-reset: step; }
+.steps > li { position: relative; padding-left: 56px; counter-increment: step; }
+.steps > li + li { margin-top: 20px; }
+.steps > li::before {
+  content: counter(step); position: absolute; left: 0; top: 0;
+  width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--pg-flow); color: #fff; font-weight: 700; font-size: .95rem;
+}
+.steps > li:not(:last-child)::after {
+  content: ""; position: absolute; left: 16px; top: 40px; bottom: -16px; width: 2px;
+  background: #f0d9c2; border-radius: 1px;
+}
+.steps p { margin: 0; }
+.steps .step-title { font-weight: 700; color: var(--pg-ink); margin-bottom: 2px; padding-top: 4px; }
+
+/* Врезка «Так устроено у Figma и Penpot» */
+.callout {
+  background: #f2f5f9; border: 1px solid #d5dee8; border-radius: 20px; padding: 26px 28px 28px;
+}
+.callout h3 { margin: 0 0 16px; font-size: 1.12rem; }
+.cmp-grid { display: grid; grid-template-columns: 1.45fr 1fr 1.2fr; gap: 12px; }
+.cmp { padding: 14px 16px 16px; border-radius: 14px; background: rgba(255, 255, 255, .55); }
+.cmp p { margin: 0; font-size: .93rem; line-height: 1.55; }
+.cmp .cmp-name { font-weight: 700; color: var(--pg-ink); font-size: 1rem; margin-bottom: 4px; }
+.cmp.is-ours { background: #fff; box-shadow: inset 0 0 0 1.5px var(--pg-core); }
+.cmp.is-ours .cmp-name { color: var(--pg-core-deep); }
+
+/* Код */
+.code-block { background: var(--code-bg); border-radius: 16px; overflow: hidden; }
+.code-head {
+  padding: 11px 20px; font-size: .86rem; color: #a9bdc9; border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+.code-head code { background: rgba(255, 255, 255, .08); color: #d6e2ea; }
+.code-block pre {
+  margin: 0; padding: 16px 20px 20px; overflow-x: auto;
+  font: 13.5px/1.68 var(--pg-mono); color: var(--code-ink); tab-size: 2;
+}
+.code-block pre code { background: none; color: inherit; padding: 0; font-size: inherit; overflow-wrap: normal; }
+.tok-k { color: var(--code-key); }
+.tok-s { color: var(--code-str); }
+.tok-n { color: #f3c58f; }
+.tok-c { color: #7f97a6; font-style: italic; }
+.tok-g { color: #ffffff; font-weight: 650; }
+
+/* Таблицы */
+.table-wrap {
+  overflow-x: auto; border: 1px solid var(--pg-rule); border-radius: 16px; background: #fff;
+  -webkit-overflow-scrolling: touch;
+}
+.table-wrap table { width: 100%; min-width: 600px; border-collapse: collapse; font-size: .92rem; line-height: 1.5; }
+.table-wrap.wide table { min-width: 780px; }
+.table-wrap th, .table-wrap td { text-align: left; vertical-align: top; padding: 12px 16px; }
+.table-wrap thead th {
+  background: var(--pg-tint); font-size: .82rem; font-weight: 700; color: #3a4a55;
+  border-bottom: 1px solid var(--pg-rule);
+}
+.table-wrap tbody tr + tr > * { border-top: 1px solid #e8eef0; }
+.table-wrap tbody th { font-weight: 650; color: var(--pg-ink); }
+#risks .table-wrap tbody th { width: 26%; }
+#risks .table-wrap td:nth-child(2) { width: 32%; }
+.pill {
+  display: inline-block; padding: 1px 10px; border-radius: 999px; white-space: nowrap;
+  background: #eef2f3; color: #3d4d58; font-size: .82rem; font-weight: 650;
+}
+.pill.now { background: var(--pg-ok-soft); color: var(--pg-ok); }
+
+/* Этапы */
+.stages { list-style: none; padding: 0; }
+.stage { position: relative; padding-left: 58px; }
+.stage + .stage { margin-top: 18px; }
+.stage-num {
+  position: absolute; left: 0; top: 16px; width: 40px; height: 40px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--pg-core); color: #fff; font-weight: 700;
+}
+.stage:first-child .stage-num { background: var(--pg-ok); }
+.stage:not(:last-child)::before {
+  content: ""; position: absolute; left: 19px; top: 60px; bottom: -14px; width: 2px; background: #cbdada;
+}
+.stage-body { border: 1px solid var(--pg-rule); border-radius: 18px; padding: 18px 22px 20px; background: #fff; }
+.stage-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin-bottom: 12px; }
+.stage-head h3 { margin: 0; font-size: 1.16rem; }
+.stage-k { color: var(--pg-muted); font-weight: 600; }
+.chip {
+  display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: .78rem; font-weight: 650;
+  background: #eef2f3; color: #4a5a66;
+}
+.chip.ok { background: var(--pg-ok-soft); color: var(--pg-ok); }
+.chip.planned { background: var(--pg-core-soft); color: var(--pg-core); }
+.chip.cond { background: #fae8e6; color: #9b342e; }
+.chip.open { background: #fcefe0; color: #8a4a0c; }
+.chip.hyp { background: #fff; color: #4a5a66; border: 1px dashed #9fb2be; padding: 1px 9px; }
+/* Текст прямо на тёмной панели итога: полужирное и ссылки не должны темнеть */
+.summary-panel > p strong, .summary-panel > ul strong, .summary-panel > ol strong, .summary-panel .thesis strong { color: #ffffff; }
+.summary-panel > p a, .summary-panel > ul a, .summary-panel .thesis a { color: #9fe0d6; }
+.stage-body > p { margin: 0; font-size: .96rem; line-height: 1.55; }
+.stage-body > p + p { margin-top: 8px; }
+.callout > p { margin: 0; }
+.stage dl { display: grid; grid-template-columns: 8.8em minmax(0, 1fr); gap: 9px 18px; margin: 0; }
+.stage dt { font-size: .85rem; font-weight: 700; color: var(--pg-muted); padding-top: .15em; }
+.stage dd { margin: 0; font-size: .96rem; line-height: 1.55; }
+
+.note { background: var(--pg-tint); border: 1px solid var(--pg-rule); border-radius: 16px; padding: 16px 20px 18px; }
+.note p { margin: 0; font-size: .96rem; line-height: 1.6; }
+
+/* ---------- Итог: решения для старта ---------- */
+.sec-final { padding-top: 104px; }
+.summary-panel {
+  max-width: var(--pg-wide-w);
+  background: var(--pg-core-deep); color: #d7ebe8;
+  border-radius: 26px; padding: clamp(22px, 4vw, 48px);
+}
+.summary-panel .sec-head { max-width: var(--pg-text-w); }
+.summary-panel h2 { color: #fff; }
+.summary-panel .sec-num { background: #fff; color: var(--pg-core-deep); }
+.summary-panel .thesis { color: #e9f5f3; }
+.decisions {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;
+  margin-top: 32px; grid-auto-flow: dense; align-items: start;
+}
+.decision {
+  display: flex; flex-direction: column; background: #fff; color: var(--pg-text);
+  border-radius: 18px; padding: 20px 22px 20px;
+}
+.decision.key, .decision.span2 { grid-column: 1 / -1; }
+.decision h3 { margin: 0 0 10px; font-size: 1.06rem; line-height: 1.32; }
+.decision.key h3 { font-size: 1.3rem; letter-spacing: -.01em; }
+.decision p { margin: 0; font-size: .94rem; line-height: 1.55; }
+.decision ul.plain { margin: 0 0 14px; font-size: .94rem; line-height: 1.5; }
+.dec-label { font-size: .8rem !important; font-weight: 700; color: var(--pg-muted); margin-bottom: 3px !important; }
+.decision > p:not(.dec-label), .decision > ul { margin-bottom: 14px; }
+.rec { margin-top: auto; background: var(--pg-core-soft); border-radius: 12px; padding: 11px 14px 12px; }
+.rec .rec-label { font-size: .78rem; font-weight: 700; color: var(--pg-core); margin-bottom: 2px; }
+.rec p:last-child { color: var(--pg-ink); }
+.options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 4px 0 14px; }
+.option { background: var(--pg-tint); border: 1px solid #e1e8ea; border-radius: 14px; padding: 14px 16px 16px; }
+.opt-name { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--pg-ink); margin-bottom: 6px !important; font-size: 1rem !important; }
+.opt-letter {
+  flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--pg-core); color: #fff; font-size: .85rem;
+}
+.decision .compare { margin: 4px 0 14px; }
+.compare table { min-width: 640px; }
+.compare thead th { font-size: .95rem; color: var(--pg-ink); vertical-align: middle; }
+.compare thead th .opt-letter { display: inline-grid; width: 24px; height: 24px; margin-right: 8px; font-size: .8rem; vertical-align: middle; }
+.compare tbody th { width: 22%; font-size: .86rem; color: var(--pg-muted); }
+.compare td { width: 39%; }
+.decision p.common { margin-bottom: 14px; color: var(--pg-ink); }
+.decision.metrics { margin-top: 14px; }
+.decision.metrics ul.plain { margin: 0; }
+
+/* ---------- Схемы ---------- */
+.fig { margin: 0; }
+.fig-frame {
+  position: relative; background: #fff; border: 1px solid var(--pg-rule); border-radius: 20px;
+  padding: clamp(10px, 2vw, 26px); cursor: zoom-in; transition: border-color .15s ease;
+}
+.fig-frame:hover { border-color: #b5c7ca; }
+.fig-frame:focus-visible { outline: 3px solid var(--pg-focus); outline-offset: 3px; border-radius: 20px; }
+.fig-zoom {
+  position: absolute; right: 12px; top: 12px; display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 650; color: var(--pg-core-deep);
+  background: rgba(255, 255, 255, .95); border: 1px solid #c9d8d9; border-radius: 999px;
+  padding: 5px 12px 5px 10px; opacity: 0; transition: opacity .15s ease; pointer-events: none;
+}
+.fig-frame:hover .fig-zoom, .fig-frame:focus-visible .fig-zoom { opacity: 1; }
+.fig figcaption { margin-top: 14px; max-width: 760px; font-size: .88rem; line-height: 1.58; color: var(--pg-muted); }
+.fig figcaption b { color: var(--pg-ink); font-weight: 700; }
+.fig figcaption code { font-size: .9em; }
+.fig .fig-name { color: var(--pg-ink); font-weight: 600; }
+@media (hover: none) {
+  .fig-zoom { position: static; opacity: 1; display: flex; width: max-content; margin: 10px auto 0; font-size: 12.5px; }
+}
+
+/* ---------- Оглавление и кнопка печати ---------- */
+.toc-list { list-style: none; margin: 0; padding: 0; }
+.toc-list a {
+  display: flex; gap: 10px; padding: 6px 12px; border-radius: 10px;
+  color: #3f505c; text-decoration: none; font-size: .86rem; line-height: 1.35;
+}
+.toc-list a:hover { background: var(--pg-tint); color: var(--pg-ink); }
+.toc-list a[aria-current] { background: var(--pg-core-soft); color: var(--pg-core-deep); font-weight: 650; }
+.toc-num { min-width: 1.5em; color: #8394a0; font-variant-numeric: tabular-nums; }
+.toc-list a[aria-current] .toc-num { color: var(--pg-core); }
+.toc summary { list-style: none; }
+.toc summary::-webkit-details-marker { display: none; }
+.print-btn {
+  display: inline-flex; align-items: center; gap: 8px; flex: none;
+  font: 600 14px/1 var(--pg-sans); color: var(--pg-core-deep);
+  background: #fff; border: 1px solid #c4d5d6; border-radius: 999px; padding: 9px 15px; cursor: pointer;
+}
+.print-btn:hover { background: var(--pg-core-soft); }
+
+.doc-foot { margin-top: 96px; border-top: 1px solid var(--pg-rule); padding: 22px 0 56px; }
+.doc-foot p { margin: 0; font-size: .86rem; color: var(--pg-muted); }
+
+/* ---------- Широкий экран: липкое оглавление слева ---------- */
+@media (min-width: 1180px) {
+  .shell {
+    display: grid; grid-template-columns: 210px minmax(0, 1fr); column-gap: 52px;
+    grid-template-areas: "hero hero" "toc main" ". foot";
+  }
+  .hero { grid-area: hero; display: grid; grid-template-columns: 210px minmax(0, 1fr); column-gap: 52px; }
+  .hero-meta { padding-top: 12px; border-top: 3px solid var(--pg-core); align-self: start; margin-top: 4px; }
+  .toc {
+    grid-area: toc; position: sticky; top: 28px; align-self: start;
+    margin-top: 96px; max-height: calc(100vh - 56px); overflow: auto; padding: 0 2px 16px;
+  }
+  .toc summary { cursor: default; pointer-events: none; font-size: .8rem; font-weight: 700; color: var(--pg-muted); padding: 0 12px 10px; }
+  .toc-current { display: none; }
+  .toc .print-btn { margin: 20px 12px 0; }
+  .article { grid-area: main; }
+  .doc-foot { grid-area: foot; }
+}
+
+/* ---------- Узкий экран: оглавление сверху ---------- */
+@media (max-width: 1179.98px) {
+  html { scroll-padding-top: 68px; }
+  .shell { padding: 0 24px; }
+  .toc {
+    position: sticky; top: 0; z-index: 40; display: flex; align-items: center; gap: 12px;
+    height: 54px; margin: 0 -24px; padding: 0 24px;
+    background: #fff; border-bottom: 1px solid var(--pg-rule);
+  }
+  .toc-details { flex: 1; min-width: 0; }
+  .toc summary {
+    display: flex; align-items: center; gap: 10px; height: 54px; cursor: pointer;
+    font-size: .92rem; font-weight: 700; color: var(--pg-ink); min-width: 0;
+  }
+  .toc summary::before {
+    content: ""; flex: none; width: 8px; height: 8px; margin: -3px 2px 0 2px;
+    border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg);
+  }
+  .toc-details[open] summary::before { transform: rotate(-135deg); margin-top: 4px; }
+  .toc-current {
+    min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    font-weight: 500; color: var(--pg-muted);
+  }
+  .toc-current:not(:empty)::before { content: "/"; margin-right: 10px; color: #b1bec5; }
+  .toc-list {
+    position: absolute; left: 0; right: 0; top: 54px; background: #fff;
+    border-bottom: 1px solid var(--pg-rule); box-shadow: 0 14px 28px rgba(20, 33, 43, .12);
+    max-height: calc(100vh - 54px); overflow: auto; padding: 8px 16px 16px;
+  }
+  .toc-list a { font-size: .95rem; padding: 9px 12px; }
+  .hero { padding: 40px 0 48px; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 2px 14px; margin-bottom: 16px; }
+  .hero-meta, .hero-main > *, .flow > * { margin-left: 0; margin-right: auto; }
+  .hero-meta { max-width: var(--pg-text-w); }
+  .hero-main { max-width: var(--pg-wide-w); margin: 0 auto; }
+  .article { max-width: var(--pg-wide-w); margin: 0 auto; }
+  .summary-panel { margin: 0 auto; }
+  .doc-foot { max-width: var(--pg-wide-w); margin-left: auto; margin-right: auto; }
+  .values { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 899.98px) {
+  .uses, .trust { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .uses > li:nth-child(n) { grid-column: auto; }
+  .trust > li:last-child { grid-column: 1 / -1; }
+  .cmp-grid { grid-template-columns: 1fr; }
+  .pitch { grid-template-columns: 1fr; }
+  .pitch > li { padding: 14px 0 15px; }
+  .pitch > li + li { padding-left: 0; border-left: 0; border-top: 1px solid #cddcda; }
+}
+@media (min-width: 640px) and (max-width: 899.98px) {
+  .table-wrap.wide table, .compare table { min-width: 0; }
+}
+@media (max-width: 759.98px) {
+  .decisions, .options { grid-template-columns: 1fr; }
+  .decision.span2 { grid-column: auto; }
+}
+@media (max-width: 639.98px) {
+  body { font-size: 16.5px; }
+  .shell { padding: 0 16px; }
+  .toc { margin: 0 -16px; padding: 0 16px; }
+  .toc .print-btn { padding: 8px 12px; font-size: 13px; }
+  .toc summary:has(.toc-current:not(:empty)) .toc-sum-title { display: none; }
+  .toc-current:not(:empty)::before { content: none; }
+  .toc-current { color: var(--pg-ink); font-weight: 650; }
+  .values, .quad, .uses, .trust { grid-template-columns: 1fr; }
+  .trust > li:last-child { grid-column: auto; }
+  .sec { padding-top: 72px; }
+  .sec-final { padding-top: 80px; }
+  .thesis { font-size: 1.1rem; }
+  .flow > p, .flow li, .decision p, .stage dd { hyphens: auto; }
+  .flow > .tagline, .thesis, .card-title, h1, h2, h3 { hyphens: manual; }
+  .stage { padding-left: 0; }
+  .stage-num { display: none; }
+  .stage:not(:last-child)::before { display: none; }
+  .stage dl { grid-template-columns: 1fr; gap: 2px; }
+  .stage dd + dt { margin-top: 10px; }
+  .steps > li { padding-left: 46px; }
+  .steps > li::before { width: 30px; height: 30px; font-size: .88rem; }
+  .steps > li:not(:last-child)::after { left: 14px; top: 36px; }
+  .callout { padding: 20px 18px 20px; }
+  .summary-panel { border-radius: 20px; margin: 0 -4px; }
+  .decision { padding: 18px 18px; }
+  .fig-frame { border-radius: 14px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .fig-frame > svg.fg { width: 800px; max-width: none; }
+  .fig figcaption::before {
+    content: "Схема шире экрана — листайте её вбок или откройте крупно.";
+    display: block; margin-bottom: 6px; font-size: .8rem; font-weight: 650; color: var(--pg-core);
+  }
+
+  /* таблицы на телефоне — карточками */
+  .table-wrap { overflow: visible; border: 0; border-radius: 0; background: none; }
+  .table-wrap table, .table-wrap.wide table { min-width: 0; display: block; }
+  .table-wrap thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .table-wrap tbody { display: grid; gap: 10px; }
+  .table-wrap tr { display: block; border: 1px solid var(--pg-rule); border-radius: 14px; padding: 12px 16px 14px; background: #fff; }
+  .table-wrap tbody tr + tr > * { border-top: 0; }
+  .table-wrap th, .table-wrap td { display: block; padding: 0; width: auto !important; }
+  .table-wrap tbody th { font-size: .98rem; margin-bottom: 6px; }
+  .table-wrap td + td { margin-top: 8px; }
+  .table-wrap td::before { content: attr(data-label); display: block; font-size: .76rem; font-weight: 700; color: var(--pg-muted); margin-bottom: 1px; }
+  .viewer-bar { padding: 10px 12px; gap: 8px; }
+  .viewer-title { font-size: 13px; }
+  .viewer-btn { font-size: 13px; padding: 8px 12px; }
+  .viewer-stage { padding: 4px 8px 12px; }
+}
+
+/* ---------- Просмотр схемы крупно ---------- */
+.viewer {
+  position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none;
+  margin: 0; padding: 0; border: 0; background: rgba(13, 24, 31, .97); color: #fff;
+}
+.viewer[open] { display: flex; flex-direction: column; }
+.viewer::backdrop { background: transparent; }
+.viewer-bar { display: flex; align-items: center; gap: 10px; padding: 12px 16px; flex: none; }
+.viewer-title { flex: 1; min-width: 0; margin: 0; font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.viewer-btn {
+  flex: none; font: 600 14px/1 var(--pg-sans); color: #fff; background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .28); border-radius: 999px; padding: 9px 15px; cursor: pointer;
+}
+.viewer-btn:hover { background: rgba(255, 255, 255, .2); }
+.viewer-btn:focus-visible { outline-color: #9cc0ff; }
+.viewer-stage { flex: 1; min-height: 0; overflow: auto; display: flex; padding: 8px 16px 20px; overscroll-behavior: contain; }
+.viewer-sheet { flex: none; margin: auto; background: #fff; border-radius: 14px; padding: 16px; cursor: default; }
+.viewer-sheet .fg { width: 100%; height: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+
+/* ---------- Печать: A4 ---------- */
+@page { size: A4; margin: 15mm; }
+@media print {
+  html { scroll-behavior: auto; }
+  body { font-size: 10.5pt; line-height: 1.5; background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .toc, .skip, .fig-zoom, .print-btn, .viewer { display: none !important; }
+  .shell { display: block; max-width: none; padding: 0; }
+  .hero { display: block; padding: 0 0 6mm; }
+  .hero::before { display: none; }
+  .hero-meta { display: flex; gap: 0 12px; margin: 0 0 4mm; border: 0; padding: 0; }
+  .hero h1 { font-size: 26pt; }
+  .tagline { font-size: 14pt; }
+  .flow > *, .hero-main > *, .hero-meta, .article, .hero-main, .doc-foot, .summary-panel { max-width: none !important; margin-left: 0 !important; margin-right: 0 !important; }
+  .values { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3mm; }
+  .values > li { padding: 3.5mm 4mm; }
+  .values > li > p:last-child { font-size: 9pt; }
+  .hero-main > .lead { font-size: 10pt; }
+  .pitch { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pitch > li { padding: 3mm 4mm 3mm 0; }
+  .pitch > li + li { padding-left: 4mm; border-top: 0; border-left: 1px solid #cddcda; }
+  .pitch p { font-size: 9pt; }
+  .sec { padding-top: 9mm; }
+  .sec-final { padding-top: 9mm; }
+  .sec-head { break-inside: avoid; page-break-inside: avoid; }
+  h1, h2, h3, .sec-head, .code-head, .step-title { break-after: avoid; page-break-after: avoid; }
+  .sec-head h2 { font-size: 17pt; }
+  .thesis { font-size: 12pt; }
+  .fig, .fig-frame, .values > li, .uses > li, .quad > li, .trust, .trust > li, .steps > li, .stage, .decision:not(.key),
+  .callout, .note, .code-block, .table-wrap tr, .rec, .option, .pitch { break-inside: avoid; page-break-inside: avoid; }
+  .steps > li:last-child { break-before: avoid; page-break-before: avoid; }
+  .trust { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .trust > li, .trust > li:last-child { grid-column: auto; padding: 3.5mm; }
+  .fig { margin-top: 6mm !important; }
+  .fig-frame { border: 0; border-radius: 0; padding: 0; cursor: auto; overflow: visible; }
+  .fig-frame > svg.fg { width: 100%; }
+  .fig figcaption::before { content: none; }
+  .fig figcaption { font-size: 8.5pt; max-width: none; }
+  .uses { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3mm; }
+  .uses > li:nth-child(n) { grid-column: auto; padding: 4mm; }
+  .decisions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .decision.key, .decision.span2 { grid-column: 1 / -1; }
+  .decision { padding: 4mm; }
+  .code-block { background: #f3f6f7; border: .6pt solid #d3dce0; }
+  .code-head { color: #4d5d68; border-bottom-color: #d3dce0; }
+  .code-block pre { color: #14212b; overflow: visible; white-space: pre-wrap; font-size: 8.5pt; }
+  .tok-k { color: #0f5c66; } .tok-s, .tok-n { color: #9a4a0b; } .tok-c { color: #5b6b78; } .tok-g { color: #14212b; }
+  .table-wrap { overflow: visible; border-radius: 3mm; }
+  .table-wrap table, .table-wrap.wide table, .compare table { min-width: 0; font-size: 8.8pt; }
+  thead { display: table-header-group; }
+  .summary-panel { background: #fff; color: var(--pg-text); border: 1.2pt solid var(--pg-core); border-radius: 4mm; padding: 6mm; }
+  .summary-panel h2 { color: var(--pg-ink); }
+  .summary-panel .sec-num { background: var(--pg-core); color: #fff; }
+  .summary-panel .thesis { color: var(--pg-ink); }
+  .decision { border: .6pt solid #cfdadc; }
+  a { color: inherit; text-decoration: none; }
+  .doc-foot { margin-top: 10mm; padding-bottom: 0; }
+}
+
+/* Карточки упражнений дня на телефоне: подходы, вес, запас и отдых — в две колонки, чтобы день помещался в меньшее число экранов */
+@media (max-width: 639.98px) {
+  .table-wrap[aria-label^="День"]:not([aria-label*="проходка"]) tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 14px; row-gap: 8px; }
+  .table-wrap[aria-label^="День"]:not([aria-label*="проходка"]) tbody th { grid-column: 1 / -1; margin-bottom: 0; }
+  .table-wrap[aria-label^="День"]:not([aria-label*="проходка"]) td + td { margin-top: 0; }
+  .table-wrap[aria-label^="День"]:not([aria-label*="проходка"]) td:nth-of-type(2) { font-weight: 650; color: var(--pg-ink); }
+}
+
+/* Навигация личного сайта: отдельно от сетки и оформления статьи. */
+.site-bar { background: #f5f2ec; border-bottom: 1px solid #deded4; }
+.site-bar-nav {
+  max-width: 1400px; margin: 0 auto; padding: 14px 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  font: 15px/1.5 var(--pg-sans);
+}
+.site-bar-nav a { color: #24352d; text-decoration: none; }
+.site-bar-nav a:hover { color: #a64029; text-decoration: underline; text-underline-offset: 4px; }
+.site-bar-name { font-weight: 650; }
+.site-bar-nav a:focus-visible { outline: 3px solid #a64029; outline-offset: 5px; }
+@media (max-width: 639.98px) {
+  .site-bar-nav { padding: 13px 20px; gap: 12px; font-size: 14px; }
+}
+@media print { .site-bar { display: none !important; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Перейти к тексту</a>
+<header class="site-bar">
+  <nav class="site-bar-nav" aria-label="Навигация сайта">
+    <a class="site-bar-name" href="../">Роман Гордеев</a>
+    <a href="../#notes">Все записи <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+<div class="shell">
+  <nav class="toc" aria-label="Содержание">
+    <details class="toc-details">
+      <summary><span class="toc-sum-title">Содержание</span><span class="toc-current" aria-hidden="true"></span></summary>
+      <ol class="toc-list"><li><a href="#s0"><span class="toc-num">0</span><span class="toc-label">Бриф</span></a></li><li><a href="#s1"><span class="toc-num">1</span><span class="toc-label">Неделя 1 · спокойный старт</span></a></li><li><a href="#s2"><span class="toc-num">2</span><span class="toc-label">Неделя 2 · набор объёма</span></a></li><li><a href="#s3"><span class="toc-num">3</span><span class="toc-label">Неделя 3 · верх первой волны</span></a></li><li><a href="#s4"><span class="toc-num">4</span><span class="toc-label">Неделя 4 · разгрузка</span></a></li><li><a href="#s5"><span class="toc-num">5</span><span class="toc-label">Неделя 5 · первый тяжёлый одиночный</span></a></li><li><a href="#s6"><span class="toc-num">6</span><span class="toc-label">Неделя 6 · одиночный 82,5</span></a></li><li><a href="#s7"><span class="toc-num">7</span><span class="toc-label">Неделя 7 · верх второй волны</span></a></li><li><a href="#s8"><span class="toc-num">8</span><span class="toc-label">Неделя 8 · разгрузка</span></a></li><li><a href="#s9"><span class="toc-num">9</span><span class="toc-label">Неделя 9 · силовая волна</span></a></li><li><a href="#s10"><span class="toc-num">10</span><span class="toc-label">Неделя 10 · одиночный 87,5</span></a></li><li><a href="#s11"><span class="toc-num">11</span><span class="toc-label">Неделя 11 · 90 кг становятся рабочими</span></a></li><li><a href="#s12"><span class="toc-num">12</span><span class="toc-label">Неделя 12 · подводка и тест</span></a></li><li><a href="#s13"><span class="toc-num">13</span><span class="toc-label">Правила цикла</span></a></li><li><a href="#s14"><span class="toc-num">14</span><span class="toc-label">Разминка, тяжёлый одиночный и подсобные</span></a></li><li><a href="#s15"><span class="toc-num">15</span><span class="toc-label">Жимы</span></a></li><li><a href="#s16"><span class="toc-num">16</span><span class="toc-label">Спина и плечи</span></a></li><li><a href="#s17"><span class="toc-num">17</span><span class="toc-label">Руки и резинки</span></a></li><li><a href="#s18"><span class="toc-num">18</span><span class="toc-label">Почему так устроено и реалистичный горизонт</span></a></li></ol>
+    </details>
+    <button class="print-btn" type="button" data-print><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 6V2.5h7V6M4.5 11.5h-2v-5h11v5h-2M4.5 9.5h7v4h-7z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>Печать / PDF</button>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-meta">
+      <p class="hero-kind">Программа тренировок</p>
+      <p class="hero-date">12 недель · старт от 1ПМ 90 кг</p>
+    </div>
+    <div class="hero-main flow">
+      <h1>Жим лёжа: 12 недель от тяжёлых 90 к уверенным 90 и попытке 100 кг</h1>
+      <p class="tagline">Два жимовых дня в неделю, вес на каждый подход и простые правила: когда прибавлять, когда повторить, когда снизить.</p><p class="lead">Программа ведёт от максимума 90 кг, поднятого на пределе, к 90 кг как рабочему одиночному и контрольной проходке до 95–100 кг. Цикл — три волны по три недели с разгрузкой между ними: сначала объём, затем тяжёлые одиночные, затем силовая волна и тест. Все веса основного жима посчитаны от 90 кг, разминка — от рабочего веса дня. Подходы не доводятся до отказа: сила растёт от регулярной тяжёлой и чистой работы, а не от борьбы.</p><ul class="pitch wide"><li><p class="pitch-label">Старт</p><p>Максимум 90 кг поднят на пределе, с замедлением от груди. В прошлом беспокоило левое плечо, поэтому стартовые веса вспомогательных упражнений осторожные, а боль всегда останавливает упражнение.</p></li><li><p class="pitch-label">Цель</p><p>К неделе 11 — 90 кг рабочим одиночным без борьбы. В конце недели 12 — проходка: 95 кг реально, 100 кг — при готовности (раздел <a href="#s12">12</a>).</p></li><li><p class="pitch-label">Как пользоваться</p><p>Перед стартом прочитать разделы <a href="#s13">13</a> и <a href="#s14">14</a> — это 10 минут. В зале открыть содержание и выбрать номер недели: раздел N = неделя N, в нём оба дня целиком.</p></li></ul><ul class="values wide"><li><p class="card-title">Без отказа</p><p>В основном жиме остаётся 1–3 повтора в запасе, во вспомогательных — не меньше 2. Тяжёлый одиночный — без борьбы.</p></li><li><p class="card-title">Одиночный — потолок</p><p>Плановый вес — максимум на сегодня, а не обязательство. Подсобные подходы считаются от фактического одиночного.</p></li><li><p class="card-title">Светофор</p><p>Последний рабочий подход решает, что дальше: по плану, без прибавки или на 5 кг легче.</p></li><li><p class="card-title">Боль — стоп</p><p>Боль в плече, груди или локте прекращает упражнение. Тяжёлого жима нет, пока причина не ясна.</p></li></ul><figure class="fig" id="fig-1"><div class="fig-frame" tabindex="0" role="button" aria-label="Рисунок 1. 12 недель: вес основного жима. Открыть крупно"><svg class="fg" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="f1-title f1-desc">
+  <title id="f1-title">12 недель: вес основного жима по неделям</title>
+  <desc id="f1-desc">Три волны по три недели с разгрузкой в неделях 4 и 8. В дне A самый тяжёлый вес растёт с 65 до 87,5 кг к неделе 10, на неделе 11 одиночный 90 кг — только при условии, иначе 87,5. В дне B вес жима с паузой растёт с 57,5 до 75 кг. На неделе 12 — облегчённый день A и контрольная проходка от 90 к 95–100 кг по готовности.</desc>
+
+  <!-- легенда -->
+  <rect class="fill-paper" x="40" y="18" width="1120" height="28"/>
+  <path class="link-select" d="M40 32 h34" stroke-linecap="round"/>
+  <circle class="fill-paper" cx="57" cy="32" r="7"/>
+  <circle class="fill-select" cx="57" cy="32" r="5"/>
+  <text class="t-body" x="86" y="38">День A — самый тяжёлый вес дня (одиночный или рабочие подходы)</text>
+  <path class="link-flow" d="M700 32 h34" stroke-linecap="round"/>
+  <circle class="fill-paper" cx="717" cy="32" r="7"/>
+  <circle class="fill-flow" cx="717" cy="32" r="5"/>
+  <text class="t-body" x="746" y="38">День B — жим с паузой, рабочий вес</text>
+
+  <!-- полосы разгрузки и теста -->
+  <rect class="fill-panel" x="375" y="112" width="88.3" height="388"/>
+  <rect class="fill-panel" x="728.3" y="112" width="88.3" height="388"/>
+  <rect class="fill-panel" x="1081.7" y="112" width="88.3" height="388"/>
+  <text class="t-small" x="419.2" y="132" text-anchor="middle">разгрузка</text>
+  <text class="t-small" x="772.5" y="132" text-anchor="middle">разгрузка</text>
+
+  <!-- заголовки волн -->
+  <text class="t-tag t-core" x="242.5" y="74" text-anchor="middle">ВОЛНА 1</text>
+  <text class="t-small" x="242.5" y="94" text-anchor="middle">объём: 5 × 5</text>
+  <rect class="fill-line" x="118" y="104" width="249" height="2"/>
+  <text class="t-tag t-core" x="595.8" y="74" text-anchor="middle">ВОЛНА 2</text>
+  <text class="t-small" x="595.8" y="94" text-anchor="middle">одиночный и 4 × 4</text>
+  <rect class="fill-line" x="471" y="104" width="249" height="2"/>
+  <text class="t-tag t-core" x="949.2" y="74" text-anchor="middle">ВОЛНА 3</text>
+  <text class="t-small" x="949.2" y="94" text-anchor="middle">одиночный и 4 × 3, 3 × 2</text>
+  <rect class="fill-line" x="824.6" y="104" width="249" height="2"/>
+  <text class="t-tag t-flow" x="1125.8" y="74" text-anchor="middle">ТЕСТ</text>
+  <text class="t-small" x="1125.8" y="94" text-anchor="middle">неделя 12</text>
+
+  <!-- сетка и оси -->
+  <rect class="fill-line" x="110" y="140" width="1060" height="1"/>
+  <rect class="fill-line" x="110" y="284" width="1060" height="1"/>
+  <rect class="fill-line" x="110" y="356" width="1060" height="1"/>
+  <rect class="fill-line" x="110" y="428" width="1060" height="1"/>
+  <rect class="fill-muted" x="110" y="500" width="1060" height="1.5"/>
+  <text class="t-small" x="98" y="145" text-anchor="end">100 кг</text>
+  <text class="t-small" x="98" y="217" text-anchor="end">90</text>
+  <text class="t-small" x="98" y="289" text-anchor="end">80</text>
+  <text class="t-small" x="98" y="361" text-anchor="end">70</text>
+  <text class="t-small" x="98" y="433" text-anchor="end">60</text>
+  <text class="t-small" x="98" y="505" text-anchor="end">50</text>
+
+  <!-- ориентир: нынешний максимум -->
+  <path class="link dash" d="M110 212 H1170"/>
+  <text class="t-small" x="118" y="204">90 кг — максимум сейчас</text>
+
+  <!-- проходка: диапазон попыток -->
+  <rect class="st-open" x="1113.8" y="140" width="24" height="72" rx="10"/>
+  <text class="t-small" x="1072" y="152" text-anchor="end">проходка 90 → 95–100</text>
+  <text class="t-small" x="1072" y="170" text-anchor="end">по готовности</text>
+
+  <!-- день B -->
+  <path class="link-flow" stroke-linejoin="round" stroke-linecap="round" d="M154.2 446 L242.5 428 L330.8 410 L419.2 482 L507.5 410 L595.8 392 L684.2 374 L772.5 464 L860.8 356 L949.2 338 L1037.5 320"/>
+  <g>
+    <circle class="fill-paper" cx="154.2" cy="446" r="7"/><circle class="fill-flow" cx="154.2" cy="446" r="5"/>
+    <circle class="fill-paper" cx="242.5" cy="428" r="7"/><circle class="fill-flow" cx="242.5" cy="428" r="5"/>
+    <circle class="fill-paper" cx="330.8" cy="410" r="7"/><circle class="fill-flow" cx="330.8" cy="410" r="5"/>
+    <circle class="fill-paper" cx="419.2" cy="482" r="7"/><circle class="fill-flow" cx="419.2" cy="482" r="5"/>
+    <circle class="fill-paper" cx="507.5" cy="410" r="7"/><circle class="fill-flow" cx="507.5" cy="410" r="5"/>
+    <circle class="fill-paper" cx="595.8" cy="392" r="7"/><circle class="fill-flow" cx="595.8" cy="392" r="5"/>
+    <circle class="fill-paper" cx="684.2" cy="374" r="7"/><circle class="fill-flow" cx="684.2" cy="374" r="5"/>
+    <circle class="fill-paper" cx="772.5" cy="464" r="7"/><circle class="fill-flow" cx="772.5" cy="464" r="5"/>
+    <circle class="fill-paper" cx="860.8" cy="356" r="7"/><circle class="fill-flow" cx="860.8" cy="356" r="5"/>
+    <circle class="fill-paper" cx="949.2" cy="338" r="7"/><circle class="fill-flow" cx="949.2" cy="338" r="5"/>
+    <circle class="fill-paper" cx="1037.5" cy="320" r="7"/><circle class="fill-flow" cx="1037.5" cy="320" r="5"/>
+  </g>
+  <text class="t-small" x="154.2" y="472" text-anchor="middle">57,5</text>
+  <text class="t-small" x="330.8" y="436" text-anchor="middle">62,5</text>
+  <text class="t-small" x="684.2" y="400" text-anchor="middle">67,5</text>
+  <text class="t-small" x="1037.5" y="346" text-anchor="middle">75</text>
+
+  <!-- день A -->
+  <path class="link-select" stroke-linejoin="round" stroke-linecap="round" d="M154.2 392 L242.5 374 L330.8 356 L419.2 446 L507.5 284 L595.8 266 L684.2 248 L772.5 428 L860.8 248 L949.2 230"/>
+  <path class="link-select dash" stroke-linecap="round" d="M949.2 230 L1037.5 212 L1125.8 266"/>
+  <g>
+    <circle class="fill-paper" cx="154.2" cy="392" r="7"/><circle class="fill-select" cx="154.2" cy="392" r="5"/>
+    <circle class="fill-paper" cx="242.5" cy="374" r="7"/><circle class="fill-select" cx="242.5" cy="374" r="5"/>
+    <circle class="fill-paper" cx="330.8" cy="356" r="7"/><circle class="fill-select" cx="330.8" cy="356" r="5"/>
+    <circle class="fill-paper" cx="419.2" cy="446" r="7"/><circle class="fill-select" cx="419.2" cy="446" r="5"/>
+    <circle class="fill-paper" cx="507.5" cy="284" r="7"/><circle class="fill-select" cx="507.5" cy="284" r="5"/>
+    <circle class="fill-paper" cx="595.8" cy="266" r="7"/><circle class="fill-select" cx="595.8" cy="266" r="5"/>
+    <circle class="fill-paper" cx="684.2" cy="248" r="7"/><circle class="fill-select" cx="684.2" cy="248" r="5"/>
+    <circle class="fill-paper" cx="772.5" cy="428" r="7"/><circle class="fill-select" cx="772.5" cy="428" r="5"/>
+    <circle class="fill-paper" cx="860.8" cy="248" r="7"/><circle class="fill-select" cx="860.8" cy="248" r="5"/>
+    <circle class="fill-paper" cx="949.2" cy="230" r="7"/><circle class="fill-select" cx="949.2" cy="230" r="5"/>
+    <circle class="st-condition" cx="1037.5" cy="212" r="8"/><circle class="fill-select" cx="1037.5" cy="212" r="3"/>
+    <circle class="fill-muted" cx="1037.5" cy="230" r="4"/>
+    <circle class="fill-paper" cx="1125.8" cy="266" r="7"/><circle class="fill-select" cx="1125.8" cy="266" r="5"/>
+  </g>
+  <text class="t-small" x="154.2" y="377" text-anchor="middle">65</text>
+  <text class="t-small" x="330.8" y="341" text-anchor="middle">70</text>
+  <text class="t-small" x="507.5" y="269" text-anchor="middle">80</text>
+  <text class="t-small" x="684.2" y="233" text-anchor="middle">85</text>
+  <text class="t-small" x="949.2" y="256" text-anchor="middle">87,5</text>
+  <text class="t-small t-gap" x="1037.5" y="194" text-anchor="middle">90 · условие</text>
+  <text class="t-small" x="1037.5" y="256" text-anchor="middle">иначе 87,5</text>
+  <text class="t-small" x="1125.8" y="290" text-anchor="middle">82,5</text>
+
+  <!-- ось недель -->
+  <g>
+    <text class="t-small" x="154.2" y="526" text-anchor="middle">1</text>
+    <text class="t-small" x="242.5" y="526" text-anchor="middle">2</text>
+    <text class="t-small" x="330.8" y="526" text-anchor="middle">3</text>
+    <text class="t-small" x="419.2" y="526" text-anchor="middle">4</text>
+    <text class="t-small" x="507.5" y="526" text-anchor="middle">5</text>
+    <text class="t-small" x="595.8" y="526" text-anchor="middle">6</text>
+    <text class="t-small" x="684.2" y="526" text-anchor="middle">7</text>
+    <text class="t-small" x="772.5" y="526" text-anchor="middle">8</text>
+    <text class="t-small" x="860.8" y="526" text-anchor="middle">9</text>
+    <text class="t-small" x="949.2" y="526" text-anchor="middle">10</text>
+    <text class="t-small" x="1037.5" y="526" text-anchor="middle">11</text>
+    <text class="t-small" x="1125.8" y="526" text-anchor="middle">12</text>
+  </g>
+  <text class="t-small" x="98" y="526" text-anchor="end">неделя</text>
+
+  <text class="t-body" x="40" y="574">До недели 11 тяжёлые одиночные не выше 87,5 кг. Одиночный — потолок дня: его вес подтверждает контрольный подводящий.</text>
+</svg><span class="fig-zoom" aria-hidden="true"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Открыть крупно</span></div><figcaption><b>Рисунок 1.</b> <span class="fig-name">12 недель: вес основного жима.</span> Три волны по три недели с разгрузкой в неделях 4 и 8. Тяжёлые одиночные растут к неделе 10 и не превышают 87,5 кг; 90 кг на неделе 11 — только при условии, проходка — в конце недели 12.</figcaption></figure>
+    </div>
+  </header>
+
+  <main id="main" class="article" tabindex="-1">
+    <section class="sec flow" id="s0" aria-labelledby="s0-h"><header class="sec-head"><h2 id="s0-h"><span class="sec-num" aria-hidden="true">0</span><span class="vh">0. </span><span>Бриф: 12 недель одним экраном</span></h2><p class="thesis">Каждая строка — неделя: основной жим и второе упражнение обоих дней. Полный план дня с разминкой, суперсетами и отдыхом — в разделе с номером недели.</p></header><div class="table-wrap wide" role="region" tabindex="0" aria-label="Бриф: 12 недель одним экраном"><table><thead><tr><th scope="col">Неделя</th><th scope="col">День A · жим лёжа</th><th scope="col">День B · жим с паузой</th><th scope="col">Задача недели</th><th scope="col">План дня</th></tr></thead><tbody><tr><th scope="row" data-label="Неделя"><strong>1</strong></th><td data-label="День A · жим лёжа">5 × 5 × 65 · узкий 3 × 6 × 55</td><td data-label="День B · жим с паузой">4 × 6 × 57,5 · гантели 3 × 8 × 20</td><td data-label="Задача недели">спокойный старт, техника</td><td data-label="План дня">раздел <a href="#s1">1</a></td></tr><tr><th scope="row" data-label="Неделя"><strong>2</strong></th><td data-label="День A · жим лёжа">5 × 5 × 67,5 · узкий 3 × 7 × 55</td><td data-label="День B · жим с паузой">4 × 6 × 60 · гантели 3 × 9 × 20</td><td data-label="Задача недели">набор объёма</td><td data-label="План дня">раздел <a href="#s2">2</a></td></tr><tr><th scope="row" data-label="Неделя"><strong>3</strong></th><td data-label="День A · жим лёжа">5 × 5 × 70 · узкий 3 × 8 × 55</td><td data-label="День B · жим с паузой">4 × 6 × 62,5 · гантели 3 × 10 × 20</td><td data-label="Задача недели">последний подход ≤ RPE 8,5</td><td data-label="План дня">раздел <a href="#s3">3</a></td></tr><tr><th scope="row" data-label="Неделя"><strong>4</strong></th><td data-label="День A · жим лёжа">3 × 5 × 57,5 · узкий 2 × 6 × ≈ 47,5</td><td data-label="День B · жим с паузой">3 × 5 × 52,5 · гантели 2 × 8 × ≈ 18</td><td data-label="Задача недели">разгрузка</td><td data-label="План дня">раздел <a href="#s4">4</a></td></tr><tr><th scope="row" data-label="Неделя"><strong>5</strong></th><td data-label="День A · жим лёжа">1 × 80, затем 4 × 4 × 70 · узкий 3 × 6 × 57,5</td><td data-label="День B · жим с паузой">5 × 5 × 62,5 · гантели 3 × 8 × 22</td><td data-label="Задача недели">первый тяжёлый одиночный</td><td data-label="План дня">раздел <a href="#s5">5</a></td></tr><tr><th scope="row" data-label="Неделя"><strong>6</strong></th><td data-label="День A · жим лёжа">1 × 82,5, затем 4 × 4 × 72,5 · узкий 3 × 7 × 57,5</td><td data-label="День B · жим с паузой">5 × 5 × 65 · гантели 3 × 9 × 22</td><td data-label="Задача недели">82,5 — если 80 шли быстро</td><td data-label="План дня">раздел <a href="#s6">6</a></td></tr><tr><th scope="row" data-label="Неделя"><strong>7</strong></th><td data-label="День A · жим лёжа">1 × 85, затем 4 × 4 × 75 · узкий 3 × 8 × 57,5</td><td data-label="День B · жим с паузой">5 × 4 × 67,5 · гантели 3 × 10 × 22</td><td data-label="Задача недели">тяжело, но без борьбы</td><td data-label="План дня">раздел <a href="#s7">7</a></td></tr><tr><th scope="row" data-label="Неделя"><strong>8</strong></th><td data-label="День A · жим лёжа">3 × 4 × 60 · узкий 2 × 6 × ≈ 50</td><td data-label="День B · жим с паузой">3 × 5 × 55 · гантели 2 × 8 × ≈ 20</td><td data-label="Задача недели">разгрузка</td><td data-label="План дня">раздел <a href="#s8">8</a></td></tr><tr><th scope="row" data-label="Неделя"><strong>9</strong></th><td data-label="День A · жим лёжа">1 × 85, затем 4 × 3 × 77,5 · узкий 3 × 6 × 60</td><td data-label="День B · жим с паузой">5 × 4 × 70 · гантели 3 × 8 × 24</td><td data-label="Задача недели">силовая волна</td><td data-label="План дня">раздел <a href="#s9">9</a></td></tr><tr><th scope="row" data-label="Неделя"><strong>10</strong></th><td data-label="День A · жим лёжа">1 × 87,5, затем 4 × 3 × 80 · узкий 3 × 7 × 60</td><td data-label="День B · жим с паузой">6 × 3 × 72,5 · гантели 3 × 9 × 24</td><td data-label="Задача недели">скорость и техника</td><td data-label="План дня">раздел <a href="#s10">10</a></td></tr><tr><th scope="row" data-label="Неделя"><strong>11</strong></th><td data-label="День A · жим лёжа">1 × 90, затем 3 × 2 × 82,5 · узкий 3 × 8 × 60</td><td data-label="День B · жим с паузой">4 × 3 × 75 · гантели 3 × 10 × 24</td><td data-label="Задача недели">90 — если 87,5 шли быстро</td><td data-label="План дня">раздел <a href="#s11">11</a></td></tr><tr><th scope="row" data-label="Неделя"><strong>12</strong></th><td data-label="День A · жим лёжа">1 × 82,5, затем 2 × 3 × 70 · узкий 2 × 5 × ≈ 50</td><td data-label="День B · жим с паузой"><strong>Контрольная проходка</strong></td><td data-label="Задача недели">подводка и тест</td><td data-label="План дня">раздел <a href="#s12">12</a></td></tr></tbody></table></div><h3>Как читать записи</h3><ul class="leads"><li><strong>«5 × 5 × 65».</strong> 5 подходов по 5 повторов с весом 65 кг. «1 × 80» — один повтор с 80 кг.</li><li><strong>«Запас / RPE».</strong> Запас — сколько повторов ещё можно было бы сделать после подхода; RPE = 10 − запас: запас 2 — это RPE 8.</li><li><strong>«3а → 3б».</strong> Суперсет: упражнения пары по очереди, 20–40 с между ними и 90–150 с после пары.</li><li><strong>«Свой вес».</strong> Вес на блоке, подобранный в неделю 1 и растущий по двойной прогрессии (раздел <a href="#s13">13</a>). «+1 шаг» — на одну плитку тяжелее.</li><li><strong>«¹».</strong> Вес новой волны: прибавка, если в последнюю неделю прошлой волны верх диапазона взят во всех подходах с запасом хотя бы 1.</li><li><strong>«Потолок».</strong> Тяжелее сегодня нельзя, легче можно.</li><li><strong>«Контрольный».</strong> Подводящий на 5 кг легче одиночного: идёт как подводящие — делается одиночный; нет — контрольный и есть одиночный дня.</li><li><strong>«Подсобные».</strong> Рабочие подходы после одиночного.</li><li><strong>«Быстро / ровно / тяжело / с борьбой».</strong> Оценка одиночного по скорости: как подводящие (RPE до 7,5); медленнее, но без застревания (≈ 8); замедление в 5–15 см от груди (8,5–9); остановка или перекос (9,5–10). Подробно — раздел <a href="#s14">14</a>.</li><li><strong>Гантели.</strong> Вес указан на одну руку.</li></ul><div class="table-wrap" role="region" tabindex="0" aria-label="Как читать записи"><table><thead><tr><th scope="col">RPE</th><th scope="col">Запас</th><th scope="col">Как ощущается</th></tr></thead><tbody><tr><th scope="row" data-label="RPE">10</th><td data-label="Запас">0</td><td data-label="Как ощущается">Больше ни одного повтора, борьба</td></tr><tr><th scope="row" data-label="RPE">9</th><td data-label="Запас">1</td><td data-label="Как ощущается">Ещё один — точно, два — нет</td></tr><tr><th scope="row" data-label="RPE">8</th><td data-label="Запас">2</td><td data-label="Как ощущается">Медленно, но ровно; ещё два</td></tr><tr><th scope="row" data-label="RPE">7</th><td data-label="Запас">3</td><td data-label="Как ощущается">Быстро, вес чувствуется; ещё три</td></tr><tr><th scope="row" data-label="RPE">6 и ниже</th><td data-label="Запас">4 и больше</td><td data-label="Как ощущается">Легко, высокая скорость</td></tr></tbody></table></div></section><section class="sec flow" id="s1" aria-labelledby="s1-h"><header class="sec-head"><h2 id="s1-h"><span class="sec-num" aria-hidden="true">1</span><span class="vh">1. </span><span>Неделя 1 · спокойный старт</span></h2><p class="thesis">Веса лёгкие: задача недели — ровная техника, одинаковая точка касания и привычка к разминке. В основном жиме остаётся 3–5 повторов в запасе — вес ради ощущения тяжести не повышается.</p></header><p><strong>Записать после каждого дня:</strong> RPE последнего подхода основного жима (в днях с одиночным — скорость одиночного и RPE последнего подсобного) и повторы во вспомогательных. Что дальше — светофор, раздел <a href="#s13">13</a>.</p><h3>День A · понедельник</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="День A · понедельник"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка</td><td data-label="Вес">20×10 → 20×10 → 30×5 → 42,5×3 → 52,5×2 → 57,5×1</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед рабочими 2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа</strong></th><td data-label="Подходы × повторы"><strong>5 × 5</strong></td><td data-label="Вес"><strong>65 кг</strong></td><td data-label="Запас / RPE">3–5, вес не повышать</td><td data-label="Отдых">3–5 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим узким хватом</th><td data-label="Подходы × повторы">3 × 6</td><td data-label="Вес"><strong>55 кг</strong></td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга с упором грудью</th><td data-label="Подходы × повторы">4 × 8</td><td data-label="Вес">подбор: вес на 10 повт. с запасом 2</td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Разведения на заднюю дельту</th><td data-label="Подходы × повторы">4 × 12</td><td data-label="Вес"><strong>6 кг</strong></td><td data-label="Запас / RPE">≈ 5</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Разгибание рук на верхнем блоке</th><td data-label="Подходы × повторы">3 × 10</td><td data-label="Вес">подбор: вес на 12 повт. с запасом 2</td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Сгибание рук с гантелями</th><td data-label="Подходы × повторы">3 × 10</td><td data-label="Вес"><strong>12 кг</strong></td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><h3>День B · пятница</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="День B · пятница"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка, два последних — с паузой</td><td data-label="Вес">20×10 → 20×10 → 30×5 → 40×3 → 50×2</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед рабочими 2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа с паузой 1 с</strong></th><td data-label="Подходы × повторы"><strong>4 × 6</strong></td><td data-label="Вес"><strong>57,5 кг</strong></td><td data-label="Запас / RPE">3–5, вес не повышать</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим гантелей на наклонной скамье 15–30°</th><td data-label="Подходы × повторы">3 × 8</td><td data-label="Вес"><strong>20 кг</strong></td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">2 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга верхнего блока нейтральным хватом</th><td data-label="Подходы × повторы">4 × 8</td><td data-label="Вес">подбор: вес на 12 повт. с запасом 2</td><td data-label="Запас / RPE">≈ 6</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Подъём гантелей в стороны</th><td data-label="Подходы × повторы">4 × 12</td><td data-label="Вес"><strong>6 кг</strong></td><td data-label="Запас / RPE">≈ 5</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Тяга каната к лицу</th><td data-label="Подходы × повторы">3 × 12</td><td data-label="Вес">подбор: вес на 15 повт. с запасом 2, лёгкий</td><td data-label="Запас / RPE">≈ 5</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Разгибание рук с канатом</th><td data-label="Подходы × повторы">3 × 12</td><td data-label="Вес">подбор: вес на 15 повт. с запасом 2</td><td data-label="Запас / RPE">≈ 5</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><div class="note"><p><strong>Калибровка.</strong> Узкий жим 55 кг и гантели 20 кг — осторожный старт. Если во всех подходах осталось 5 и больше повторов в запасе, со 2-й недели вес выше: узкий +5 кг, гантели +2 кг, а повторы во 2-ю неделю — как в 1-ю. Если 55 кг дают меньше шести чистых повторов или неприятны плечу или запястью — 50–52,5 кг. После калибровки все дальнейшие веса этого упражнения в таблицах сдвигаются на ту же величину. На блоках вес подбирается сегодня: такой, с которым верхняя граница повторов получилась бы с запасом 2. Его стоит записать — это «свой вес».</p></div></section><section class="sec flow" id="s2" aria-labelledby="s2-h"><header class="sec-head"><h2 id="s2-h"><span class="sec-num" aria-hidden="true">2</span><span class="vh">2. </span><span>Неделя 2 · набор объёма</span></h2><p class="thesis">Вес растёт на 2,5 кг, схема прежняя. Если неделя 1 далась совсем легко, это нормально: старт специально осторожный, и вес ради ощущения тяжести не повышается.</p></header><p><strong>Записать после каждого дня:</strong> RPE последнего подхода основного жима (в днях с одиночным — скорость одиночного и RPE последнего подсобного) и повторы во вспомогательных. Что дальше — светофор, раздел <a href="#s13">13</a>.</p><h3>День A · понедельник</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="День A · понедельник"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка</td><td data-label="Вес">20×10 → 20×10 → 30×5 → 45×3 → 55×2 → 60×1</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед рабочими 2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа</strong></th><td data-label="Подходы × повторы"><strong>5 × 5</strong></td><td data-label="Вес"><strong>67,5 кг</strong></td><td data-label="Запас / RPE">3–5, вес не повышать</td><td data-label="Отдых">3–5 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим узким хватом</th><td data-label="Подходы × повторы">3 × 7</td><td data-label="Вес"><strong>55 кг</strong></td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга с упором грудью</th><td data-label="Подходы × повторы">4 × 9</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Разведения на заднюю дельту</th><td data-label="Подходы × повторы">4 × 14</td><td data-label="Вес"><strong>6 кг</strong></td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Разгибание рук на верхнем блоке</th><td data-label="Подходы × повторы">3 × 11</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Сгибание рук с гантелями</th><td data-label="Подходы × повторы">3 × 11</td><td data-label="Вес"><strong>12 кг</strong></td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><h3>День B · пятница</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="День B · пятница"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка, два последних — с паузой</td><td data-label="Вес">20×10 → 20×10 → 30×5 → 42,5×3 → 50×2</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед рабочими 2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа с паузой 1 с</strong></th><td data-label="Подходы × повторы"><strong>4 × 6</strong></td><td data-label="Вес"><strong>60 кг</strong></td><td data-label="Запас / RPE">3–5, вес не повышать</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим гантелей на наклонной скамье 15–30°</th><td data-label="Подходы × повторы">3 × 9</td><td data-label="Вес"><strong>20 кг</strong></td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">2 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга верхнего блока нейтральным хватом</th><td data-label="Подходы × повторы">4 × 10</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Подъём гантелей в стороны</th><td data-label="Подходы × повторы">4 × 14</td><td data-label="Вес"><strong>6 кг</strong></td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Тяга каната к лицу</th><td data-label="Подходы × повторы">3 × 14</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Разгибание рук с канатом</th><td data-label="Подходы × повторы">3 × 14</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><div class="note"><p><strong>Вспомогательные.</strong> Плановые повторы в таблице — ориентир. Если они не получаются во всех подходах, достаточно +1 повтора в одном-двух подходах.</p></div></section><section class="sec flow" id="s3" aria-labelledby="s3-h"><header class="sec-head"><h2 id="s3-h"><span class="sec-num" aria-hidden="true">3</span><span class="vh">3. </span><span>Неделя 3 · верх первой волны</span></h2><p class="thesis">Самая тяжёлая неделя первой волны: последний подход основного жима — не тяжелее RPE 8,5. Если тяжелее — светофор (раздел <a href="#s13">13</a>).</p></header><p><strong>Записать после каждого дня:</strong> RPE последнего подхода основного жима (в днях с одиночным — скорость одиночного и RPE последнего подсобного) и повторы во вспомогательных. Что дальше — светофор, раздел <a href="#s13">13</a>.</p><h3>День A · понедельник</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="День A · понедельник"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка</td><td data-label="Вес">20×10 → 20×10 → 32,5×5 → 45×3 → 55×2 → 62,5×1</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед рабочими 2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа</strong></th><td data-label="Подходы × повторы"><strong>5 × 5</strong></td><td data-label="Вес"><strong>70 кг</strong></td><td data-label="Запас / RPE">последний ≤ RPE 8,5</td><td data-label="Отдых">3–5 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим узким хватом</th><td data-label="Подходы × повторы">3 × 8</td><td data-label="Вес"><strong>55 кг</strong></td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга с упором грудью</th><td data-label="Подходы × повторы">4 × 10</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Разведения на заднюю дельту</th><td data-label="Подходы × повторы">4 × 15</td><td data-label="Вес"><strong>6 кг</strong></td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Разгибание рук на верхнем блоке</th><td data-label="Подходы × повторы">3 × 12</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Сгибание рук с гантелями</th><td data-label="Подходы × повторы">3 × 12</td><td data-label="Вес"><strong>12 кг</strong></td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><h3>День B · пятница</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="День B · пятница"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка, два последних — с паузой</td><td data-label="Вес">20×10 → 20×10 → 27,5×5 → 40×3 → 50×2 → 57,5×1</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед рабочими 2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа с паузой 1 с</strong></th><td data-label="Подходы × повторы"><strong>4 × 6</strong></td><td data-label="Вес"><strong>62,5 кг</strong></td><td data-label="Запас / RPE">2–3</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим гантелей на наклонной скамье 15–30°</th><td data-label="Подходы × повторы">3 × 10</td><td data-label="Вес"><strong>20 кг</strong></td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">2 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга верхнего блока нейтральным хватом</th><td data-label="Подходы × повторы">4 × 12</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Подъём гантелей в стороны</th><td data-label="Подходы × повторы">4 × 15</td><td data-label="Вес"><strong>6 кг</strong></td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Тяга каната к лицу</th><td data-label="Подходы × повторы">3 × 15</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Разгибание рук с канатом</th><td data-label="Подходы × повторы">3 × 15</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><div class="note"><p><strong>Конец волны.</strong> Во вспомогательных — верхняя граница диапазона. Если она взята во всех подходах с запасом хотя бы 1, на неделе 5 вес растёт (пометка ¹).</p></div></section><section class="sec flow" id="s4" aria-labelledby="s4-h"><header class="sec-head"><h2 id="s4-h"><span class="sec-num" aria-hidden="true">4</span><span class="vh">4. </span><span>Неделя 4 · разгрузка</span></h2><p class="thesis">Неделя разгрузки: веса и объём снижены, чтобы снять усталость перед тяжёлой волной. Делать легко, не добавлять «от себя».</p></header><p><strong>Записать после каждого дня:</strong> RPE последнего подхода основного жима (в днях с одиночным — скорость одиночного и RPE последнего подсобного) и повторы во вспомогательных. Что дальше — светофор, раздел <a href="#s13">13</a>.</p><h3>День A · понедельник</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="День A · понедельник"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка</td><td data-label="Вес">20×10 → 20×10 → 30×5 → 40×3 → 50×2</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед рабочими 2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа</strong></th><td data-label="Подходы × повторы"><strong>3 × 5</strong></td><td data-label="Вес"><strong>57,5 кг</strong></td><td data-label="Запас / RPE">4+, легко</td><td data-label="Отдых">3–5 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим узким хватом</th><td data-label="Подходы × повторы">2 × 6</td><td data-label="Вес">≈ 47,5 кг (свой −15 %)</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга с упором грудью</th><td data-label="Подходы × повторы">3 × 8</td><td data-label="Вес">свой −10 %</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Разведения на заднюю дельту</th><td data-label="Подходы × повторы">3 × 12</td><td data-label="Вес">≈ 5 кг (свой −10 %)</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Разгибание рук на верхнем блоке</th><td data-label="Подходы × повторы">2 × 10</td><td data-label="Вес">свой −10 %</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Сгибание рук с гантелями</th><td data-label="Подходы × повторы">2 × 10</td><td data-label="Вес">≈ 10 кг (свой −10 %)</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><h3>День B · пятница</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="День B · пятница"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка, два последних — с паузой</td><td data-label="Вес">20×10 → 20×10 → 27,5×5 → 37,5×3 → 45×2</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед рабочими 2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа с паузой 1 с</strong></th><td data-label="Подходы × повторы"><strong>3 × 5</strong></td><td data-label="Вес"><strong>52,5 кг</strong></td><td data-label="Запас / RPE">4+, легко</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим гантелей на наклонной скамье 15–30°</th><td data-label="Подходы × повторы">2 × 8</td><td data-label="Вес">≈ 18 кг (свой −10 %)</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">2 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга верхнего блока нейтральным хватом</th><td data-label="Подходы × повторы">3 × 8</td><td data-label="Вес">свой −10 %</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Подъём гантелей в стороны</th><td data-label="Подходы × повторы">3 × 12</td><td data-label="Вес">≈ 5 кг (свой −10 %)</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Тяга каната к лицу</th><td data-label="Подходы × повторы">2 × 12</td><td data-label="Вес">свой −10 %</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Разгибание рук с канатом</th><td data-label="Подходы × повторы">2 × 12</td><td data-label="Вес">свой −10 %</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><div class="note"><p><strong>Разгрузка.</strong> Веса в таблице уже снижены — ничего не вычитать, делать легко. Если свой вес изменился (калибровка, пропущенная прибавка), разгрузка считается от своего: −10 %, узкий хват −15 %. Сигнал светофора прошлой недели переносится на первую неделю новой волны.</p></div></section><section class="sec flow" id="s5" aria-labelledby="s5-h"><header class="sec-head"><h2 id="s5-h"><span class="sec-num" aria-hidden="true">5</span><span class="vh">5. </span><span>Неделя 5 · первый тяжёлый одиночный</span></h2><p class="thesis">Начинаются тяжёлые одиночные: 80 кг и подсобные подходы от него. Одиночный — технический повтор без борьбы (раздел <a href="#s14">14</a>).</p></header><p><strong>Записать после каждого дня:</strong> RPE последнего подхода основного жима (в днях с одиночным — скорость одиночного и RPE последнего подсобного) и повторы во вспомогательных. Что дальше — светофор, раздел <a href="#s13">13</a>.</p><h3>День A · понедельник</h3><div class="note"><p><strong>Первый одиночный — 80 кг, потолок.</strong> Со страхующим или в раме с ограничителями. Контрольный 75 идёт как подводящие — одиночный 80; если медленнее — одиночным дня становится 75, подсобные 4 × 4 × 65. Жёлтый или красный недели 3 меняет только подсобные (раздел <a href="#s13">13</a>).</p></div><div class="table-wrap wide" role="region" tabindex="0" aria-label="День A · понедельник"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка</td><td data-label="Вес">20×10 → 20×10 → 35×5 → 50×3 → 60×2 → 67,5×1 → 75×1 (контрольный)</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед одиночным 3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа · одиночный</strong></th><td data-label="Подходы × повторы"><strong>1 × 1</strong></td><td data-label="Вес"><strong>80 кг</strong> · потолок</td><td data-label="Запас / RPE">быстро или ровно, RPE ≤ 8</td><td data-label="Отдых">4–5 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа · подсобные</strong></th><td data-label="Подходы × повторы"><strong>4 × 4</strong></td><td data-label="Вес"><strong>70 кг</strong> (одиночный − 10)</td><td data-label="Запас / RPE">первый ≈ RPE 7–7,5</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим узким хватом</th><td data-label="Подходы × повторы">3 × 6</td><td data-label="Вес"><strong>57,5 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга с упором грудью</th><td data-label="Подходы × повторы">4 × 8</td><td data-label="Вес">свой +1 шаг ¹</td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Разведения на заднюю дельту</th><td data-label="Подходы × повторы">4 × 12</td><td data-label="Вес"><strong>7 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 5</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Разгибание рук на верхнем блоке</th><td data-label="Подходы × повторы">3 × 10</td><td data-label="Вес">свой +1 шаг ¹</td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Сгибание рук с гантелями</th><td data-label="Подходы × повторы">3 × 10</td><td data-label="Вес"><strong>14 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><h3>День B · пятница</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="День B · пятница"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка, два последних — с паузой</td><td data-label="Вес">20×10 → 20×10 → 27,5×5 → 40×3 → 50×2 → 57,5×1</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед рабочими 2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа с паузой 1 с</strong></th><td data-label="Подходы × повторы"><strong>5 × 5</strong></td><td data-label="Вес"><strong>62,5 кг</strong></td><td data-label="Запас / RPE">2–3</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим гантелей на наклонной скамье 15–30°</th><td data-label="Подходы × повторы">3 × 8</td><td data-label="Вес"><strong>22 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">2 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга верхнего блока нейтральным хватом</th><td data-label="Подходы × повторы">4 × 8</td><td data-label="Вес">свой +1 шаг ¹</td><td data-label="Запас / RPE">≈ 6</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Подъём гантелей в стороны</th><td data-label="Подходы × повторы">4 × 12</td><td data-label="Вес"><strong>7 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 5</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Тяга каната к лицу</th><td data-label="Подходы × повторы">3 × 12</td><td data-label="Вес">свой +1 шаг ¹</td><td data-label="Запас / RPE">≈ 5</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Разгибание рук с канатом</th><td data-label="Подходы × повторы">3 × 12</td><td data-label="Вес">свой +1 шаг ¹</td><td data-label="Запас / RPE">≈ 5</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><div class="note"><p><strong>¹ Вес новой волны</strong> — если на неделе 3 верх диапазона взят во всех подходах с запасом хотя бы 1. Иначе — прежний вес и повторы как на неделе 3, пока верх не взят; затем прибавка.</p></div></section><section class="sec flow" id="s6" aria-labelledby="s6-h"><header class="sec-head"><h2 id="s6-h"><span class="sec-num" aria-hidden="true">6</span><span class="vh">6. </span><span>Неделя 6 · одиночный 82,5</span></h2><p class="thesis">Одиночный растёт на 2,5 кг, только если одиночный прошлой недели шёл быстро. Ровно — тот же вес; тяжело или с борьбой — на 2,5 кг меньше.</p></header><p><strong>Записать после каждого дня:</strong> RPE последнего подхода основного жима (в днях с одиночным — скорость одиночного и RPE последнего подсобного) и повторы во вспомогательных. Что дальше — светофор, раздел <a href="#s13">13</a>.</p><h3>День A · понедельник</h3><div class="note"><p><strong>Одиночный 82,5 кг — потолок.</strong> Со страхующим или в раме с ограничителями. Прошлый одиночный (неделя 5) шёл быстро — 82,5, но не больше +2,5 кг к нему; ровно — тот же вес; тяжело или с борьбой — на 2,5 кг меньше. Контрольный = одиночный дня − 5 кг, лишние верхние ступени лесенки убрать. Подсобные — по таблице раздела <a href="#s14">14</a>, после жёлтого или красного — по светофору.</p></div><div class="table-wrap wide" role="region" tabindex="0" aria-label="День A · понедельник"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка</td><td data-label="Вес">20×10 → 20×10 → 37,5×5 → 50×3 → 62,5×2 → 70×1 → 77,5×1 (контрольный)</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед одиночным 3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа · одиночный</strong></th><td data-label="Подходы × повторы"><strong>1 × 1</strong></td><td data-label="Вес"><strong>82,5 кг</strong> · потолок</td><td data-label="Запас / RPE">быстро или ровно, RPE ≤ 8</td><td data-label="Отдых">4–5 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа · подсобные</strong></th><td data-label="Подходы × повторы"><strong>4 × 4</strong></td><td data-label="Вес"><strong>72,5 кг</strong> (одиночный − 10)</td><td data-label="Запас / RPE">первый ≈ RPE 7–7,5</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим узким хватом</th><td data-label="Подходы × повторы">3 × 7</td><td data-label="Вес"><strong>57,5 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга с упором грудью</th><td data-label="Подходы × повторы">4 × 9</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Разведения на заднюю дельту</th><td data-label="Подходы × повторы">4 × 14</td><td data-label="Вес"><strong>7 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Разгибание рук на верхнем блоке</th><td data-label="Подходы × повторы">3 × 11</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Сгибание рук с гантелями</th><td data-label="Подходы × повторы">3 × 11</td><td data-label="Вес"><strong>14 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><h3>День B · пятница</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="День B · пятница"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка, два последних — с паузой</td><td data-label="Вес">20×10 → 20×10 → 30×5 → 42,5×3 → 52,5×2 → 57,5×1</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед рабочими 2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа с паузой 1 с</strong></th><td data-label="Подходы × повторы"><strong>5 × 5</strong></td><td data-label="Вес"><strong>65 кг</strong></td><td data-label="Запас / RPE">2–3</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим гантелей на наклонной скамье 15–30°</th><td data-label="Подходы × повторы">3 × 9</td><td data-label="Вес"><strong>22 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">2 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга верхнего блока нейтральным хватом</th><td data-label="Подходы × повторы">4 × 10</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Подъём гантелей в стороны</th><td data-label="Подходы × повторы">4 × 14</td><td data-label="Вес"><strong>7 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Тяга каната к лицу</th><td data-label="Подходы × повторы">3 × 14</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Разгибание рук с канатом</th><td data-label="Подходы × повторы">3 × 14</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><div class="note"><p><strong>¹</strong> — вес новой волны, правило — в разделе <a href="#s5">5</a>.</p></div></section><section class="sec flow" id="s7" aria-labelledby="s7-h"><header class="sec-head"><h2 id="s7-h"><span class="sec-num" aria-hidden="true">7</span><span class="vh">7. </span><span>Неделя 7 · верх второй волны</span></h2><p class="thesis">Тяжело, но без борьбы. Одиночный 85 кг — потолок, а не обязательство: если контрольный подводящий идёт медленно, он и становится одиночным дня.</p></header><p><strong>Записать после каждого дня:</strong> RPE последнего подхода основного жима (в днях с одиночным — скорость одиночного и RPE последнего подсобного) и повторы во вспомогательных. Что дальше — светофор, раздел <a href="#s13">13</a>.</p><h3>День A · понедельник</h3><div class="note"><p><strong>Одиночный 85 кг — потолок.</strong> Со страхующим или в раме с ограничителями. Прошлый одиночный (неделя 6) шёл быстро — 85, но не больше +2,5 кг к нему; ровно — тот же вес; тяжело или с борьбой — на 2,5 кг меньше. Контрольный = одиночный дня − 5 кг, лишние верхние ступени лесенки убрать. Подсобные — по таблице раздела <a href="#s14">14</a>, после жёлтого или красного — по светофору.</p></div><div class="table-wrap wide" role="region" tabindex="0" aria-label="День A · понедельник"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка</td><td data-label="Вес">20×10 → 20×10 → 37,5×5 → 52,5×3 → 65×2 → 72,5×1 → 80×1 (контрольный)</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед одиночным 3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа · одиночный</strong></th><td data-label="Подходы × повторы"><strong>1 × 1</strong></td><td data-label="Вес"><strong>85 кг</strong> · потолок</td><td data-label="Запас / RPE">быстро или ровно, RPE ≤ 8</td><td data-label="Отдых">4–5 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа · подсобные</strong></th><td data-label="Подходы × повторы"><strong>4 × 4</strong></td><td data-label="Вес"><strong>75 кг</strong> (одиночный − 10)</td><td data-label="Запас / RPE">первый ≈ RPE 7–7,5</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим узким хватом</th><td data-label="Подходы × повторы">3 × 8</td><td data-label="Вес"><strong>57,5 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга с упором грудью</th><td data-label="Подходы × повторы">4 × 10</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Разведения на заднюю дельту</th><td data-label="Подходы × повторы">4 × 15</td><td data-label="Вес"><strong>7 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Разгибание рук на верхнем блоке</th><td data-label="Подходы × повторы">3 × 12</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Сгибание рук с гантелями</th><td data-label="Подходы × повторы">3 × 12</td><td data-label="Вес"><strong>14 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><h3>День B · пятница</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="День B · пятница"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка, два последних — с паузой</td><td data-label="Вес">20×10 → 20×10 → 30×5 → 45×3 → 55×2 → 60×1</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед рабочими 2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа с паузой 1 с</strong></th><td data-label="Подходы × повторы"><strong>5 × 4</strong></td><td data-label="Вес"><strong>67,5 кг</strong></td><td data-label="Запас / RPE">2–3</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим гантелей на наклонной скамье 15–30°</th><td data-label="Подходы × повторы">3 × 10</td><td data-label="Вес"><strong>22 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">2 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга верхнего блока нейтральным хватом</th><td data-label="Подходы × повторы">4 × 12</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Подъём гантелей в стороны</th><td data-label="Подходы × повторы">4 × 15</td><td data-label="Вес"><strong>7 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Тяга каната к лицу</th><td data-label="Подходы × повторы">3 × 15</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Разгибание рук с канатом</th><td data-label="Подходы × повторы">3 × 15</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><div class="note"><p><strong>¹</strong> — вес новой волны, правило — в разделе <a href="#s5">5</a>. <strong>Конец волны:</strong> верх диапазона во всех подходах с запасом хотя бы 1 — на неделе 9 прибавка.</p></div></section><section class="sec flow" id="s8" aria-labelledby="s8-h"><header class="sec-head"><h2 id="s8-h"><span class="sec-num" aria-hidden="true">8</span><span class="vh">8. </span><span>Неделя 8 · разгрузка</span></h2><p class="thesis">Вторая разгрузка перед самой тяжёлой волной. Делать легко; если плечо или локоть беспокоят — сейчас лучшее время это заметить и не нагружать.</p></header><p><strong>Записать после каждого дня:</strong> RPE последнего подхода основного жима (в днях с одиночным — скорость одиночного и RPE последнего подсобного) и повторы во вспомогательных. Что дальше — светофор, раздел <a href="#s13">13</a>.</p><h3>День A · понедельник</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="День A · понедельник"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка</td><td data-label="Вес">20×10 → 20×10 → 30×5 → 42,5×3 → 50×2</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед рабочими 2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа</strong></th><td data-label="Подходы × повторы"><strong>3 × 4</strong></td><td data-label="Вес"><strong>60 кг</strong></td><td data-label="Запас / RPE">4+, легко</td><td data-label="Отдых">3–5 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим узким хватом</th><td data-label="Подходы × повторы">2 × 6</td><td data-label="Вес">≈ 50 кг (свой −15 %)</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга с упором грудью</th><td data-label="Подходы × повторы">3 × 8</td><td data-label="Вес">свой −10 %</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Разведения на заднюю дельту</th><td data-label="Подходы × повторы">3 × 12</td><td data-label="Вес">≈ 6 кг (свой −10 %)</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Разгибание рук на верхнем блоке</th><td data-label="Подходы × повторы">2 × 10</td><td data-label="Вес">свой −10 %</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Сгибание рук с гантелями</th><td data-label="Подходы × повторы">2 × 10</td><td data-label="Вес">≈ 12 кг (свой −10 %)</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><h3>День B · пятница</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="День B · пятница"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка, два последних — с паузой</td><td data-label="Вес">20×10 → 20×10 → 27,5×5 → 37,5×3 → 47,5×2</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед рабочими 2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа с паузой 1 с</strong></th><td data-label="Подходы × повторы"><strong>3 × 5</strong></td><td data-label="Вес"><strong>55 кг</strong></td><td data-label="Запас / RPE">4+, легко</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим гантелей на наклонной скамье 15–30°</th><td data-label="Подходы × повторы">2 × 8</td><td data-label="Вес">≈ 20 кг (свой −10 %)</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">2 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга верхнего блока нейтральным хватом</th><td data-label="Подходы × повторы">3 × 8</td><td data-label="Вес">свой −10 %</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Подъём гантелей в стороны</th><td data-label="Подходы × повторы">3 × 12</td><td data-label="Вес">≈ 6 кг (свой −10 %)</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Тяга каната к лицу</th><td data-label="Подходы × повторы">2 × 12</td><td data-label="Вес">свой −10 %</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Разгибание рук с канатом</th><td data-label="Подходы × повторы">2 × 12</td><td data-label="Вес">свой −10 %</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><div class="note"><p><strong>Разгрузка.</strong> Веса в таблице уже снижены — ничего не вычитать, делать легко. Если свой вес изменился (калибровка, пропущенная прибавка), разгрузка считается от своего: −10 %, узкий хват −15 %. Сигнал светофора прошлой недели переносится на первую неделю новой волны.</p></div></section><section class="sec flow" id="s9" aria-labelledby="s9-h"><header class="sec-head"><h2 id="s9-h"><span class="sec-num" aria-hidden="true">9</span><span class="vh">9. </span><span>Неделя 9 · силовая волна</span></h2><p class="thesis">Начало силовой волны: меньше повторов, вес подсобных ближе к одиночному (одиночный − 7,5 кг).</p></header><p><strong>Записать после каждого дня:</strong> RPE последнего подхода основного жима (в днях с одиночным — скорость одиночного и RPE последнего подсобного) и повторы во вспомогательных. Что дальше — светофор, раздел <a href="#s13">13</a>.</p><h3>День A · понедельник</h3><div class="note"><p><strong>Одиночный 85 кг — потолок.</strong> Со страхующим или в раме с ограничителями. Прошлый одиночный (неделя 7) шёл быстро — 85, но не больше +2,5 кг к нему; ровно — тот же вес; тяжело или с борьбой — на 2,5 кг меньше. Контрольный = одиночный дня − 5 кг, лишние верхние ступени лесенки убрать. Подсобные — по таблице раздела <a href="#s14">14</a>, после жёлтого или красного — по светофору. Неделя 8 — разгрузка, поэтому «прошлый» здесь — одиночный недели 7.</p></div><div class="table-wrap wide" role="region" tabindex="0" aria-label="День A · понедельник"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка</td><td data-label="Вес">20×10 → 20×10 → 37,5×5 → 52,5×3 → 65×2 → 72,5×1 → 80×1 (контрольный)</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед одиночным 3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа · одиночный</strong></th><td data-label="Подходы × повторы"><strong>1 × 1</strong></td><td data-label="Вес"><strong>85 кг</strong> · потолок</td><td data-label="Запас / RPE">быстро или ровно, RPE ≤ 8</td><td data-label="Отдых">4–5 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа · подсобные</strong></th><td data-label="Подходы × повторы"><strong>4 × 3</strong></td><td data-label="Вес"><strong>77,5 кг</strong> (одиночный − 7,5)</td><td data-label="Запас / RPE">первый ≈ RPE 7–7,5</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим узким хватом</th><td data-label="Подходы × повторы">3 × 6</td><td data-label="Вес"><strong>60 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга с упором грудью</th><td data-label="Подходы × повторы">4 × 8</td><td data-label="Вес">свой +1 шаг ¹</td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Разведения на заднюю дельту</th><td data-label="Подходы × повторы">4 × 12</td><td data-label="Вес"><strong>8 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 5</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Разгибание рук на верхнем блоке</th><td data-label="Подходы × повторы">3 × 10</td><td data-label="Вес">свой +1 шаг ¹</td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Сгибание рук с гантелями</th><td data-label="Подходы × повторы">3 × 10</td><td data-label="Вес"><strong>16 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><h3>День B · пятница</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="День B · пятница"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка, два последних — с паузой</td><td data-label="Вес">20×10 → 20×10 → 32,5×5 → 45×3 → 55×2 → 62,5×1</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед рабочими 2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа с паузой 1 с</strong></th><td data-label="Подходы × повторы"><strong>5 × 4</strong></td><td data-label="Вес"><strong>70 кг</strong></td><td data-label="Запас / RPE">2–3</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим гантелей на наклонной скамье 15–30°</th><td data-label="Подходы × повторы">3 × 8</td><td data-label="Вес"><strong>24 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">2 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга верхнего блока нейтральным хватом</th><td data-label="Подходы × повторы">4 × 8</td><td data-label="Вес">свой +1 шаг ¹</td><td data-label="Запас / RPE">≈ 6</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Подъём гантелей в стороны</th><td data-label="Подходы × повторы">4 × 12</td><td data-label="Вес"><strong>8 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 5</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Тяга каната к лицу</th><td data-label="Подходы × повторы">3 × 12</td><td data-label="Вес">свой +1 шаг ¹</td><td data-label="Запас / RPE">≈ 5</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Разгибание рук с канатом</th><td data-label="Подходы × повторы">3 × 12</td><td data-label="Вес">свой +1 шаг ¹</td><td data-label="Запас / RPE">≈ 5</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><div class="note"><p><strong>¹ Вес новой волны</strong> — если на неделе 7 верх диапазона взят во всех подходах с запасом хотя бы 1. Иначе — прежний вес и повторы как на неделе 7, пока верх не взят; затем прибавка.</p></div></section><section class="sec flow" id="s10" aria-labelledby="s10-h"><header class="sec-head"><h2 id="s10-h"><span class="sec-num" aria-hidden="true">10</span><span class="vh">10. </span><span>Неделя 10 · одиночный 87,5</span></h2><p class="thesis">Одиночный 87,5 кг — последний шаг к 90. Главное — скорость и одинаковая техника. В дне B больше всего подходов за цикл — шесть, по 3 повтора.</p></header><p><strong>Записать после каждого дня:</strong> RPE последнего подхода основного жима (в днях с одиночным — скорость одиночного и RPE последнего подсобного) и повторы во вспомогательных. Что дальше — светофор, раздел <a href="#s13">13</a>.</p><h3>День A · понедельник</h3><div class="note"><p><strong>Одиночный 87,5 кг — потолок.</strong> Со страхующим или в раме с ограничителями. Прошлый одиночный (неделя 9) шёл быстро — 87,5, но не больше +2,5 кг к нему; ровно — тот же вес; тяжело или с борьбой — на 2,5 кг меньше. Контрольный = одиночный дня − 5 кг, лишние верхние ступени лесенки убрать. Подсобные — по таблице раздела <a href="#s14">14</a>, после жёлтого или красного — по светофору.</p></div><div class="table-wrap wide" role="region" tabindex="0" aria-label="День A · понедельник"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка</td><td data-label="Вес">20×10 → 20×10 → 40×5 → 55×3 → 65×2 → 75×1 → 82,5×1 (контрольный)</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед одиночным 3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа · одиночный</strong></th><td data-label="Подходы × повторы"><strong>1 × 1</strong></td><td data-label="Вес"><strong>87,5 кг</strong> · потолок</td><td data-label="Запас / RPE">быстро или ровно, RPE ≤ 8</td><td data-label="Отдых">4–5 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа · подсобные</strong></th><td data-label="Подходы × повторы"><strong>4 × 3</strong></td><td data-label="Вес"><strong>80 кг</strong> (одиночный − 7,5)</td><td data-label="Запас / RPE">первый ≈ RPE 7–7,5</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим узким хватом</th><td data-label="Подходы × повторы">3 × 7</td><td data-label="Вес"><strong>60 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга с упором грудью</th><td data-label="Подходы × повторы">4 × 9</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Разведения на заднюю дельту</th><td data-label="Подходы × повторы">4 × 14</td><td data-label="Вес"><strong>8 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Разгибание рук на верхнем блоке</th><td data-label="Подходы × повторы">3 × 11</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Сгибание рук с гантелями</th><td data-label="Подходы × повторы">3 × 11</td><td data-label="Вес"><strong>16 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><h3>День B · пятница</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="День B · пятница"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка, два последних — с паузой</td><td data-label="Вес">20×10 → 20×10 → 32,5×5 → 47,5×3 → 57,5×2 → 65×1</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед рабочими 2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа с паузой 1 с</strong></th><td data-label="Подходы × повторы"><strong>6 × 3</strong></td><td data-label="Вес"><strong>72,5 кг</strong></td><td data-label="Запас / RPE">2–3</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим гантелей на наклонной скамье 15–30°</th><td data-label="Подходы × повторы">3 × 9</td><td data-label="Вес"><strong>24 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">2 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга верхнего блока нейтральным хватом</th><td data-label="Подходы × повторы">4 × 10</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 4</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Подъём гантелей в стороны</th><td data-label="Подходы × повторы">4 × 14</td><td data-label="Вес"><strong>8 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Тяга каната к лицу</th><td data-label="Подходы × повторы">3 × 14</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Разгибание рук с канатом</th><td data-label="Подходы × повторы">3 × 14</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 3</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><div class="note"><p><strong>¹</strong> — вес новой волны, правило — в разделе <a href="#s9">9</a>.</p></div></section><section class="sec flow" id="s11" aria-labelledby="s11-h"><header class="sec-head"><h2 id="s11-h"><span class="sec-num" aria-hidden="true">11</span><span class="vh">11. </span><span>Неделя 11 · 90 кг становятся рабочими</span></h2><p class="thesis">90 кг — одиночным, если одиночный недели 10 был 87,5 и шёл быстро. Иначе — вес по правилу раздела <a href="#s14">14</a>, тот же или на 2,5 кг меньше: это не провал, а подготовка к тесту. День B короче — 4 × 3 после 6 × 3 на неделе 10: объём снижается перед тестом.</p></header><p><strong>Записать после каждого дня:</strong> RPE последнего подхода основного жима (в днях с одиночным — скорость одиночного и RPE последнего подсобного) и повторы во вспомогательных. Что дальше — светофор, раздел <a href="#s13">13</a>.</p><h3>День A · понедельник</h3><div class="note"><p><strong>Одиночный 90 кг — потолок.</strong> Со страхующим или в раме с ограничителями. Прошлый одиночный (неделя 10) шёл быстро — 90, но не больше +2,5 кг к нему; ровно — тот же вес; тяжело или с борьбой — на 2,5 кг меньше. Контрольный = одиночный дня − 5 кг, лишние верхние ступени лесенки убрать. Подсобные — по таблице раздела <a href="#s14">14</a>, после жёлтого или красного — по светофору. 90 кг — только если на неделе 10 было 87,5 и шли быстро.</p></div><div class="table-wrap wide" role="region" tabindex="0" aria-label="День A · понедельник"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка</td><td data-label="Вес">20×10 → 20×10 → 40×5 → 55×3 → 67,5×2 → 77,5×1 → 85×1 (контрольный)</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед одиночным 3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа · одиночный</strong></th><td data-label="Подходы × повторы"><strong>1 × 1</strong></td><td data-label="Вес"><strong>90 кг</strong> · потолок</td><td data-label="Запас / RPE">быстро или ровно, RPE ≤ 8</td><td data-label="Отдых">4–5 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа · подсобные</strong></th><td data-label="Подходы × повторы"><strong>3 × 2</strong></td><td data-label="Вес"><strong>82,5 кг</strong> (одиночный − 7,5)</td><td data-label="Запас / RPE">первый ≈ RPE 7–7,5</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим узким хватом</th><td data-label="Подходы × повторы">3 × 8</td><td data-label="Вес"><strong>60 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга с упором грудью</th><td data-label="Подходы × повторы">4 × 10</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Разведения на заднюю дельту</th><td data-label="Подходы × повторы">4 × 15</td><td data-label="Вес"><strong>8 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Разгибание рук на верхнем блоке</th><td data-label="Подходы × повторы">3 × 12</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Сгибание рук с гантелями</th><td data-label="Подходы × повторы">3 × 12</td><td data-label="Вес"><strong>16 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><h3>День B · пятница</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="День B · пятница"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка, два последних — с паузой</td><td data-label="Вес">20×10 → 20×10 → 35×5 → 50×3 → 60×2 → 67,5×1</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед рабочими 2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа с паузой 1 с</strong></th><td data-label="Подходы × повторы"><strong>4 × 3</strong></td><td data-label="Вес"><strong>75 кг</strong></td><td data-label="Запас / RPE">2–3</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим гантелей на наклонной скамье 15–30°</th><td data-label="Подходы × повторы">3 × 10</td><td data-label="Вес"><strong>24 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">2 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга верхнего блока нейтральным хватом</th><td data-label="Подходы × повторы">4 × 12</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Подъём гантелей в стороны</th><td data-label="Подходы × повторы">4 × 15</td><td data-label="Вес"><strong>8 кг</strong> ¹</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">90–150 с → 3а</td></tr><tr><th scope="row" data-label="Упражнение">4а. Тяга каната к лицу</th><td data-label="Подходы × повторы">3 × 15</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">20–40 с → 4б</td></tr><tr><th scope="row" data-label="Упражнение">4б. Разгибание рук с канатом</th><td data-label="Подходы × повторы">3 × 15</td><td data-label="Вес">свой вес</td><td data-label="Запас / RPE">≈ 2</td><td data-label="Отдых">90–150 с → 4а</td></tr></tbody></table></div><div class="note"><p><strong>¹</strong> — вес новой волны, правило — в разделе <a href="#s9">9</a>.</p></div></section><section class="sec flow" id="s12" aria-labelledby="s12-h"><header class="sec-head"><h2 id="s12-h"><span class="sec-num" aria-hidden="true">12</span><span class="vh">12. </span><span>Неделя 12 · подводка и тест</span></h2><p class="thesis">День A — облегчённый, чтобы снять усталость. День B — контрольная проходка со страховкой.</p></header><h3>День A · понедельник</h3><div class="note"><p><strong>Одиночный 82,5 — проверка самочувствия.</strong> Должен идти быстро, как подводящие. Если 82,5 тяжелее RPE 7,5 или контрольный 77,5 медленный, тест переносится на 2–3 дня. Руки в этот день не тренируются.</p></div><div class="table-wrap wide" role="region" tabindex="0" aria-label="День A · понедельник"><table><thead><tr><th scope="col">Упражнение</th><th scope="col">Подходы × повторы</th><th scope="col">Вес</th><th scope="col">Запас / RPE</th><th scope="col">Отдых</th></tr></thead><tbody><tr><th scope="row" data-label="Упражнение">Резинки: разведение · ротация наружу · тяга к лицу</th><td data-label="Подходы × повторы">2 × 15 · 2 × 12 на руку · 2 × 12</td><td data-label="Вес">лёгкая · очень лёгкая · лёгкая</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">20–30 с</td></tr><tr><th scope="row" data-label="Упражнение">Разминка со штангой</th><td data-label="Подходы × повторы">лесенка</td><td data-label="Вес">20×10 → 20×10 → 37,5×5 → 50×3 → 62,5×2 → 70×1 → 77,5×1 (контрольный)</td><td data-label="Запас / RPE">много</td><td data-label="Отдых">1–2 мин, перед одиночным 3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа · одиночный</strong></th><td data-label="Подходы × повторы"><strong>1 × 1</strong></td><td data-label="Вес"><strong>82,5 кг</strong> · потолок</td><td data-label="Запас / RPE">быстро, как подводящие</td><td data-label="Отдых">4–5 мин</td></tr><tr><th scope="row" data-label="Упражнение"><strong>1. Жим лёжа · подсобные</strong></th><td data-label="Подходы × повторы"><strong>2 × 3</strong></td><td data-label="Вес"><strong>70 кг</strong> (одиночный − 12,5)</td><td data-label="Запас / RPE">4+, легко</td><td data-label="Отдых">3–4 мин</td></tr><tr><th scope="row" data-label="Упражнение">2. Жим узким хватом</th><td data-label="Подходы × повторы">2 × 5</td><td data-label="Вес">≈ 50 кг (свой −15 %)</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">2–3 мин</td></tr><tr><th scope="row" data-label="Упражнение">3а. Тяга с упором грудью</th><td data-label="Подходы × повторы">2 × 8</td><td data-label="Вес">свой −10 %</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">20–40 с → 3б</td></tr><tr><th scope="row" data-label="Упражнение">3б. Разведения на заднюю дельту</th><td data-label="Подходы × повторы">2 × 12</td><td data-label="Вес">≈ 7 кг (свой −1 шаг)</td><td data-label="Запас / RPE">5+</td><td data-label="Отдых">90–150 с → 3а</td></tr></tbody></table></div><h3>День B · пятница: контрольная проходка</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="День B · пятница: контрольная проходка"><table><thead><tr><th scope="col">Этап</th><th scope="col">Вес × повторы</th><th scope="col">Отдых после</th></tr></thead><tbody><tr><th scope="row" data-label="Этап">Резинки</th><td data-label="Вес × повторы">как в обычный день</td><td data-label="Отдых после">—</td></tr><tr><th scope="row" data-label="Этап">Разминка</th><td data-label="Вес × повторы">20 × 10</td><td data-label="Отдых после">1 мин</td></tr><tr><th scope="row" data-label="Этап">Разминка</th><td data-label="Вес × повторы">40 × 5</td><td data-label="Отдых после">1–2 мин</td></tr><tr><th scope="row" data-label="Этап">Разминка</th><td data-label="Вес × повторы">55 × 3</td><td data-label="Отдых после">2 мин</td></tr><tr><th scope="row" data-label="Этап">Подводящий</th><td data-label="Вес × повторы">65 × 2</td><td data-label="Отдых после">3 мин</td></tr><tr><th scope="row" data-label="Этап">Подводящий</th><td data-label="Вес × повторы">75 × 1</td><td data-label="Отдых после">3–4 мин</td></tr><tr><th scope="row" data-label="Этап">Подводящий</th><td data-label="Вес × повторы">82,5 × 1</td><td data-label="Отдых после">4–5 мин</td></tr><tr><th scope="row" data-label="Этап"><strong>Попытка 1</strong></th><td data-label="Вес × повторы"><strong>90 × 1</strong> (87,5 — если 90 на неделе 11 не шли быстро или ровно)</td><td data-label="Отдых после">5–6 мин</td></tr><tr><th scope="row" data-label="Этап"><strong>Попытка 2</strong></th><td data-label="Вес × повторы"><strong>95 или 92,5 × 1</strong> по дереву ниже; после старта с 87,5 — 92,5 или 90</td><td data-label="Отдых после">5–6 мин</td></tr><tr><th scope="row" data-label="Этап"><strong>Попытка 3</strong></th><td data-label="Вес × повторы"><strong>100, 97,5 или 95 × 1</strong> по дереву ниже; после старта с 87,5 — +2,5 кг, без 100</td><td data-label="Отдых после">—</td></tr></tbody></table></div><h3>Перед тестом</h3><ul class="leads"><li><strong>Вход в тест.</strong> Одиночный 90 на неделе 11 шёл быстро или ровно — первая попытка 90, дальше по дереву. Иначе первая попытка 87,5: быстро — вторая 92,5; ровно или тяжело — 90; с борьбой — стоп. Третья — +2,5 кг, если вторая шла быстро или ровно; 100 кг в этот день не планируется.</li><li><strong>Страховка.</strong> Страхующий или ограничители на высоте чуть ниже груди в прогибе. Хват полный, большой палец обхватывает гриф. Попытки удобно снимать сбоку на телефон.</li><li><strong>Ноги на этой неделе.</strong> Лёгкие, без тяжёлой становой, или после теста.</li><li><strong>Самочувствие.</strong> Если в пятницу плохой сон или самочувствие, тест переносится на 2–3 дня, но не больше чем на неделю. При расписании Пн / Чт тест — в пятницу или субботу.</li><li><strong>Вариант жима.</strong> Тот же, что в дне A: хват, точка касания и траектория не меняются.</li></ul><figure class="fig" id="fig-2"><div class="fig-frame" tabindex="0" role="button" aria-label="Рисунок 2. Контрольная проходка. Открыть крупно"><svg class="fg" viewBox="0 0 1200 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="f5-title f5-desc">
+  <title id="f5-title">Контрольная проходка: выбор следующей попытки</title>
+  <desc id="f5-desc">Первая попытка — 90 кг. Если 90 быстро, вторая — 95; ровно или тяжело — 92,5; с борьбой — тест закончен с итогом 90. После 95: быстро или ровно — третья 100, тяжело — 97,5, с борьбой или не поднят — стоп. После 92,5: быстро или ровно — 95, иначе стоп. Если 90 на неделе 11 не шли быстро или ровно, старт с 87,5 и без 100 в этот день. Между попытками 5–6 минут, страховка обязательна.</desc>
+  <defs>
+    <marker id="f5-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="fill-muted" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="t-tag t-core" x="40" y="34">ПОПЫТКА 1</text>
+  <text class="t-tag t-core" x="330" y="34">ПОПЫТКА 2</text>
+  <text class="t-tag t-core" x="760" y="34">ПОПЫТКА 3</text>
+
+  <!-- попытка 1 -->
+  <rect class="select" x="40" y="280" width="210" height="80" rx="14"/>
+  <text class="t-small" x="60" y="310">после 82,5 × 1</text>
+  <text class="t-label" x="60" y="340">90 кг</text>
+
+  <text class="t-small" x="40" y="388">если 90 на неделе 11</text>
+  <text class="t-small" x="40" y="408">не шли быстро или ровно —</text>
+  <text class="t-small" x="40" y="428">старт с 87,5, без 100</text>
+
+  <path class="link" d="M250 320 C 292 320, 288 154, 322 154" marker-end="url(#f5-arrow)"/>
+  <path class="link" d="M250 320 C 292 320, 288 367, 322 367" marker-end="url(#f5-arrow)"/>
+  <path class="link" d="M250 320 C 292 320, 288 480, 322 480" marker-end="url(#f5-arrow)"/>
+
+  <!-- попытка 2 -->
+  <rect class="core-soft" x="330" y="122" width="310" height="64" rx="12"/>
+  <text class="t-small" x="348" y="146">90 быстро · RPE ≤ 7,5</text>
+  <text class="t-label" x="348" y="172">95 кг</text>
+
+  <rect class="core-soft" x="330" y="335" width="310" height="64" rx="12"/>
+  <text class="t-small" x="348" y="359">90 ровно или тяжело · RPE 8–9</text>
+  <text class="t-label" x="348" y="385">92,5 кг</text>
+
+  <rect class="gap" x="330" y="448" width="310" height="64" rx="12"/>
+  <text class="t-small" x="348" y="472">90 с борьбой · RPE 9,5–10</text>
+  <text class="t-label" x="348" y="498">Стоп · итог 90</text>
+
+  <path class="link" d="M640 154 C 700 154, 700 80, 752 80" marker-end="url(#f5-arrow)"/>
+  <path class="link" d="M640 154 H752" marker-end="url(#f5-arrow)"/>
+  <path class="link" d="M640 154 C 700 154, 700 228, 752 228" marker-end="url(#f5-arrow)"/>
+  <path class="link" d="M640 367 C 700 367, 700 330, 752 330" marker-end="url(#f5-arrow)"/>
+  <path class="link" d="M640 367 C 700 367, 700 404, 752 404" marker-end="url(#f5-arrow)"/>
+
+  <!-- попытка 3 после 95 -->
+  <rect class="select" x="760" y="48" width="400" height="64" rx="12"/>
+  <text class="t-small" x="778" y="72">95 быстро или ровно · RPE ≤ 8</text>
+  <text class="t-label" x="778" y="98">100 кг</text>
+
+  <rect class="core-soft" x="760" y="122" width="400" height="64" rx="12"/>
+  <text class="t-small" x="778" y="146">95 тяжело · RPE 8,5–9</text>
+  <text class="t-label" x="778" y="172">97,5 кг</text>
+
+  <rect class="gap" x="760" y="196" width="400" height="64" rx="12"/>
+  <text class="t-small" x="778" y="220">95 с борьбой или не поднят</text>
+  <text class="t-label" x="778" y="246">Стоп · итог 95 или 90</text>
+
+  <!-- попытка 3 после 92,5 -->
+  <rect class="core-soft" x="760" y="298" width="400" height="64" rx="12"/>
+  <text class="t-small" x="778" y="322">92,5 быстро или ровно · RPE ≤ 8</text>
+  <text class="t-label" x="778" y="348">95 кг</text>
+
+  <rect class="gap" x="760" y="372" width="400" height="64" rx="12"/>
+  <text class="t-small" x="778" y="396">92,5 тяжело, с борьбой или не поднят</text>
+  <text class="t-label" x="778" y="422">Стоп · итог 92,5 или 90</text>
+
+  <text class="t-body" x="40" y="560">Между попытками 5–6 мин. Страхующий или ограничители — обязательно; неподнятый вес не повторяется.</text>
+</svg><span class="fig-zoom" aria-hidden="true"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Открыть крупно</span></div><figcaption><b>Рисунок 2.</b> <span class="fig-name">Контрольная проходка.</span> Каждая следующая попытка выбирается по тому, как прошла предыдущая; неподнятый вес не повторяется.</figcaption></figure><div class="table-wrap" role="region" tabindex="0" aria-label="Перед тестом"><table><thead><tr><th scope="col">После попытки</th><th scope="col">Как прошла</th><th scope="col">Следующая попытка</th></tr></thead><tbody><tr><th scope="row" data-label="После попытки">90 кг</th><td data-label="Как прошла">Быстро, RPE до 7,5</td><td data-label="Следующая попытка">95 кг</td></tr><tr><th scope="row" data-label="После попытки">90 кг</th><td data-label="Как прошла">Ровно или тяжело, RPE 8–9</td><td data-label="Следующая попытка">92,5 кг</td></tr><tr><th scope="row" data-label="После попытки">90 кг</th><td data-label="Как прошла">С борьбой, RPE 9,5–10</td><td data-label="Следующая попытка">Стоп, итог 90 кг</td></tr><tr><th scope="row" data-label="После попытки">95 кг</th><td data-label="Как прошла">Быстро или ровно, RPE до 8</td><td data-label="Следующая попытка">100 кг</td></tr><tr><th scope="row" data-label="После попытки">95 кг</th><td data-label="Как прошла">Тяжело, RPE 8,5–9</td><td data-label="Следующая попытка">97,5 кг</td></tr><tr><th scope="row" data-label="После попытки">95 кг</th><td data-label="Как прошла">С борьбой или не поднят</td><td data-label="Следующая попытка">Стоп</td></tr><tr><th scope="row" data-label="После попытки">92,5 кг</th><td data-label="Как прошла">Быстро или ровно, RPE до 8</td><td data-label="Следующая попытка">95 кг</td></tr><tr><th scope="row" data-label="После попытки">92,5 кг</th><td data-label="Как прошла">Тяжело, с борьбой или не поднят</td><td data-label="Следующая попытка">Стоп</td></tr></tbody></table></div><h3>Когда 100 кг реальны</h3><p>Дерево решений главнее любых оценок. Ориентиры по итогам цикла:</p><div class="table-wrap" role="region" tabindex="0" aria-label="Когда 100 кг реальны"><table><thead><tr><th scope="col">Что получилось</th><th scope="col">Оценка максимума</th></tr></thead><tbody><tr><th scope="row" data-label="Что получилось">90 × 1 на неделе 11 быстро, примерно 3 повтора в запасе</th><td data-label="Оценка максимума">около 100 кг</td></tr><tr><th scope="row" data-label="Что получилось">95 × 1 на тесте быстро или ровно, RPE до 8</th><td data-label="Оценка максимума">около 103 кг и больше</td></tr><tr><th scope="row" data-label="Что получилось">Для сравнения: 90 × 1 тяжело, RPE 8,5–9</th><td data-label="Оценка максимума">около 94–96 кг — для 100 пока рано</td></tr></tbody></table></div></section><section class="sec flow" id="s13" aria-labelledby="s13-h"><header class="sec-head"><h2 id="s13-h"><span class="sec-num" aria-hidden="true">13</span><span class="vh">13. </span><span>Правила цикла</span></h2><p class="thesis">Цикл держат семь правил тренировки, светофор после основного жима и одно правило разгрузки; расписание и порядок упражнений одинаковы все 12 недель.</p></header><h3>Неделя и день</h3><p>По умолчанию понедельник — день A, среда — ноги по своей программе, пятница — день B. Между жимовыми днями 3–4 дня, а становая в день ног стоит не ближе 48 часов к жиму: усталость широчайших, разгибателей спины и хвата портит жимовую позицию. Если пятница неудобна — понедельник A, четверг B, ноги в субботу.</p><figure class="fig" id="fig-3"><div class="fig-frame" tabindex="0" role="button" aria-label="Рисунок 3. Неделя и тренировочный день. Открыть крупно"><svg class="fg" viewBox="0 0 1200 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="f2-title f2-desc">
+  <title id="f2-title">Неделя и тренировочный день</title>
+  <desc id="f2-desc">Понедельник — день A, среда — ноги, пятница — день B. От дня A до дня B 96 часов, от дня B до следующего дня A 72 часа, от ног до дня B 48 часов. Тренировочный день длится около 75 минут: разминка, основной жим первым и без пары, второе упражнение, затем два суперсета.</desc>
+  <defs>
+    <marker id="f2-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path class="fill-muted" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="t-tag t-core" x="40" y="34">НЕДЕЛЯ</text>
+  <!-- дни -->
+  <rect class="select" x="40" y="50" width="150" height="100" rx="14"/>
+  <text class="t-label" x="58" y="80">Пн</text>
+  <text class="t-body" x="58" y="108">День A</text>
+  <text class="t-small" x="58" y="132">силовой</text>
+
+  <rect class="box" x="200" y="50" width="150" height="100" rx="14"/>
+  <text class="t-label" x="218" y="80">Вт</text>
+  <text class="t-small" x="218" y="108">отдых</text>
+
+  <rect class="panel" x="360" y="50" width="150" height="100" rx="14"/>
+  <text class="t-label" x="378" y="80">Ср</text>
+  <text class="t-body" x="378" y="108">Ноги</text>
+  <text class="t-small" x="378" y="132">своя программа</text>
+
+  <rect class="box" x="520" y="50" width="150" height="100" rx="14"/>
+  <text class="t-label" x="538" y="80">Чт</text>
+  <text class="t-small" x="538" y="108">отдых</text>
+
+  <rect class="flow-soft" x="680" y="50" width="150" height="100" rx="14"/>
+  <text class="t-label" x="698" y="80">Пт</text>
+  <text class="t-body" x="698" y="108">День B</text>
+  <text class="t-small" x="698" y="132">пауза и объём</text>
+
+  <rect class="box" x="840" y="50" width="150" height="100" rx="14"/>
+  <text class="t-label" x="858" y="80">Сб</text>
+  <text class="t-small" x="858" y="108">отдых</text>
+
+  <rect class="box" x="1000" y="50" width="150" height="100" rx="14"/>
+  <text class="t-label" x="1018" y="80">Вс</text>
+  <text class="t-small" x="1018" y="108">отдых</text>
+
+  <!-- интервалы -->
+  <path class="link" d="M115 156 V178 H749"/>
+  <path class="link" d="M755 156 V218"/>
+  <rect class="fill-paper" x="198" y="166" width="154" height="26"/>
+  <text class="t-body" x="275" y="184" text-anchor="middle">A → B: 96 ч</text>
+
+  <path class="link" d="M761 178 H1170" marker-end="url(#f2-arrow)"/>
+  <rect class="fill-paper" x="872" y="166" width="236" height="26"/>
+  <text class="t-body" x="990" y="184" text-anchor="middle">B → следующий A: 72 ч</text>
+
+  <path class="link dash" d="M435 156 V218 H749"/>
+  <rect class="fill-paper" x="500" y="206" width="190" height="26"/>
+  <text class="t-body" x="595" y="224" text-anchor="middle">ноги → B: 48 ч</text>
+
+  <text class="t-small" x="40" y="262">Становая в день ног — не ближе 48 ч к жимовому дню. Вариант: Пн — A, Чт — B, ноги в субботу.</text>
+
+  <!-- день -->
+  <text class="t-tag t-core" x="40" y="314">ТРЕНИРОВОЧНЫЙ ДЕНЬ · ОКОЛО 75 МИН</text>
+  <rect class="panel" x="40" y="330" width="222" height="64" rx="12"/>
+  <text class="t-label" x="56" y="358">Разминка</text>
+  <text class="t-small" x="56" y="381">≈ 15 мин</text>
+
+  <rect class="core" x="264" y="330" width="371" height="64" rx="12"/>
+  <text class="t-label t-on-core" x="280" y="358">1. Основной жим</text>
+  <text class="t-small t-on-core" x="280" y="381">≈ 25 мин · первым, без пары</text>
+
+  <rect class="core-soft" x="637" y="330" width="148" height="64" rx="12"/>
+  <text class="t-label" x="651" y="358">2. Второе</text>
+  <text class="t-small" x="651" y="381">≈ 10 мин</text>
+
+  <rect class="flow-soft" x="787" y="330" width="193" height="64" rx="12"/>
+  <text class="t-label" x="801" y="358">3а ⇄ 3б</text>
+  <text class="t-small" x="801" y="381">≈ 13 мин</text>
+
+  <rect class="flow-soft" x="982" y="330" width="178" height="64" rx="12"/>
+  <text class="t-label" x="996" y="358">4а ⇄ 4б</text>
+  <text class="t-small" x="996" y="381">≈ 12 мин</text>
+
+  <text class="t-small" x="56" y="422">резинки, лесенка</text>
+  <text class="t-small" x="56" y="442">легче рабочего веса</text>
+  <text class="t-small" x="280" y="422">отдых 3–5 мин</text>
+  <text class="t-small" x="280" y="442">запас 1–3 (недели 1–2: 3–5)</text>
+  <text class="t-small" x="651" y="422">отдых 2–3 мин</text>
+  <text class="t-small" x="651" y="442">запас не меньше 2</text>
+  <text class="t-small" x="801" y="422">20–40 с в паре</text>
+  <text class="t-small" x="801" y="442">90–150 с после</text>
+  <text class="t-small" x="996" y="422">20–40 с в паре</text>
+  <text class="t-small" x="996" y="442">90–150 с после</text>
+</svg><span class="fig-zoom" aria-hidden="true"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Открыть крупно</span></div><figcaption><b>Рисунок 3.</b> <span class="fig-name">Неделя и тренировочный день.</span> Между жимовыми днями 3–4 дня, ноги — за 48 часов до дня B. В каждом дне основной жим идёт первым и без пары, суперсеты — только после него.</figcaption></figure><h3>Правила каждой тренировки</h3><ol class="plain"><li>Основной жим — первым упражнением после разминки.</li><li>Рабочие подходы не доводятся до отказа: в основном жиме 1–3 повтора в запасе (недели 1–2 — 3–5), во вспомогательных — не меньше 2: от 4–6 в начале волны до 2 в конце.</li><li>Отдых в основном жиме — 3–5 минут, полный. Так каждый тяжёлый подход получается чистым, а оценка RPE — честной.</li><li>Суперсеты — только после основного жима. Основной жим не ставится в пару ни с тягой, ни с подтягиваниями, ни с отжиманиями.</li><li>Полная амплитуда: в жимах штанги — касание груди, в гантелях — полная безболезненная амплитуда, без провала локтей ниже комфортного.</li><li>Хват, пауза и траектория не меняются от недели к неделе: сила специфична к тому варианту движения, который тренируется.</li><li>Ограничитель — для основного жима и подсобных: если первый подход тяжелее RPE 8, остальные на 2,5 кг легче. Сработавший ограничитель — это жёлтый: на следующей неделе вес не выше сниженного сегодняшнего.</li></ol><h3>Светофор: что делать на следующей неделе</h3><p>Решение принимается по последнему рабочему подходу основного жима. Дни A и B ведутся независимо, календарь не сдвигается — кроме двух красных подряд.</p><ul class="leads"><li><strong>Недели с одиночным.</strong> Светофор смотрит на последний подсобный и меняет только подсобные. Зелёный — подсобные по таблице раздела <a href="#s14">14</a> от фактического одиночного. Жёлтый — подсобные не тяжелее сегодняшних, даже если одиночный вырос. Красный — сегодняшний вес подсобных −5 кг. Одиночный выбирается только по своей скорости (раздел <a href="#s14">14</a>).</li><li><strong>Через разгрузку.</strong> Недели 4 и 8 делаются по таблице при любом сигнале. Жёлтый или красный недели 3 (7) применяется к первой неделе новой волны: в дне B — без прибавки или −5 кг от веса недели 3 (7), в дне A — к подсобным.</li></ul><figure class="fig" id="fig-4"><div class="fig-frame" tabindex="0" role="button" aria-label="Рисунок 4. Светофор после основного жима. Открыть крупно"><svg class="fg" viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="f3-title f3-desc">
+  <title id="f3-title">Светофор после основного жима</title>
+  <desc id="f3-desc">По последнему рабочему подходу основного жима — в неделях с одиночным по последнему подсобному — выбирается одно из пяти действий. Зелёный: все повторы и RPE не выше 8,5 — дальше по плану. Жёлтый: последний подход на RPE 9 — вес не растёт. Красный: недобор, помощь страхующего, RPE 9,5 и выше или срыв техники — минус 5 кг от сегодняшнего веса, затем к плану не больше чем по 2,5 кг за тренировку. Два красных подряд — разгрузка и повтор недели, цикл длиннее на 1–2 недели. Боль — стоп упражнению.</desc>
+  <defs>
+    <marker id="f3-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="fill-muted" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- исходная точка -->
+  <rect class="client" x="40" y="130" width="250" height="160" rx="16"/>
+  <path class="fill-panel" d="M41 171 V146 a15 15 0 0 1 15 -15 H274 a15 15 0 0 1 15 15 V171 Z"/>
+  <text class="t-tag t-core" x="60" y="157">ПОСЛЕ ОСНОВНОГО ЖИМА</text>
+  <text class="t-body" x="60" y="200">Оценить последний</text>
+  <text class="t-body" x="60" y="224">рабочий подход</text>
+  <text class="t-small" x="60" y="252">с одиночным — подсобный;</text>
+  <text class="t-small" x="60" y="274">повторы, RPE, техника</text>
+
+  <!-- связи -->
+  <path class="link" d="M290 210 C 320 210, 320 62, 352 62" marker-end="url(#f3-arrow)"/>
+  <path class="link" d="M290 210 C 322 210, 322 138, 352 138" marker-end="url(#f3-arrow)"/>
+  <path class="link" d="M290 210 H352" marker-end="url(#f3-arrow)"/>
+  <path class="link" d="M290 210 C 322 210, 322 290, 352 290" marker-end="url(#f3-arrow)"/>
+  <path class="link" d="M290 210 C 320 210, 320 366, 352 366" marker-end="url(#f3-arrow)"/>
+
+  <!-- 1 зелёный -->
+  <rect class="ok" x="360" y="30" width="390" height="64" rx="12"/>
+  <circle class="fill-ok" cx="386" cy="62" r="9"/>
+  <text class="t-tag t-ok" x="408" y="55">ЗЕЛЁНЫЙ</text>
+  <text class="t-small" x="408" y="79">все повторы, последний ≤ RPE 8,5</text>
+  <path class="link" d="M750 62 H782" marker-end="url(#f3-arrow)"/>
+  <rect class="box" x="790" y="30" width="370" height="64" rx="12"/>
+  <text class="t-label" x="808" y="69">Дальше по плану</text>
+
+  <!-- 2 жёлтый -->
+  <rect class="flow-soft" x="360" y="106" width="390" height="64" rx="12"/>
+  <circle class="fill-flow" cx="386" cy="138" r="9"/>
+  <text class="t-tag t-flow" x="408" y="131">ЖЁЛТЫЙ</text>
+  <text class="t-small" x="408" y="155">все повторы, но последний на RPE 9</text>
+  <path class="link" d="M750 138 H782" marker-end="url(#f3-arrow)"/>
+  <rect class="box" x="790" y="106" width="370" height="64" rx="12"/>
+  <text class="t-body" x="808" y="133">Без прибавки: схема новой недели,</text>
+  <text class="t-body" x="808" y="157">вес — сегодняшний</text>
+
+  <!-- 3 красный -->
+  <rect class="gap" x="360" y="182" width="390" height="64" rx="12"/>
+  <circle class="fill-gap" cx="386" cy="214" r="9"/>
+  <text class="t-tag t-gap" x="408" y="207">КРАСНЫЙ</text>
+  <text class="t-small" x="408" y="231">недобор, помощь, RPE 9,5+ или срыв</text>
+  <path class="link" d="M750 214 H782" marker-end="url(#f3-arrow)"/>
+  <rect class="box" x="790" y="182" width="370" height="64" rx="12"/>
+  <text class="t-body" x="808" y="209">−5 кг от сегодняшнего; к плану —</text>
+  <text class="t-body" x="808" y="233">не больше +2,5 кг за тренировку</text>
+
+  <!-- 4 два красных -->
+  <rect class="gap" x="360" y="258" width="390" height="64" rx="12"/>
+  <circle class="fill-gap" cx="380" cy="290" r="6"/>
+  <circle class="fill-gap" cx="394" cy="290" r="6"/>
+  <text class="t-tag t-gap" x="408" y="283">ДВА КРАСНЫХ ПОДРЯД</text>
+  <text class="t-small" x="408" y="307">в одном и том же дне, две недели</text>
+  <path class="link" d="M750 290 H782" marker-end="url(#f3-arrow)"/>
+  <rect class="box" x="790" y="258" width="370" height="64" rx="12"/>
+  <text class="t-body" x="808" y="285">Разгрузка, затем эта неделя</text>
+  <text class="t-body" x="808" y="309">с −5 кг; цикл +1–2 недели</text>
+
+  <!-- 5 боль -->
+  <rect class="st-condition" x="360" y="334" width="390" height="64" rx="12"/>
+  <path class="fill-gap" d="M386 352 L397 374 H375 Z"/>
+  <text class="t-tag t-gap" x="408" y="359">БОЛЬ</text>
+  <text class="t-small" x="408" y="383">в плече, груди или локте</text>
+  <path class="link" d="M750 366 H782" marker-end="url(#f3-arrow)"/>
+  <rect class="box" x="790" y="334" width="370" height="64" rx="12"/>
+  <text class="t-body" x="808" y="361">Стоп упражнению; тяжёлого жима</text>
+  <text class="t-body" x="808" y="385">нет; резкая боль — к врачу</text>
+</svg><span class="fig-zoom" aria-hidden="true"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Открыть крупно</span></div><figcaption><b>Рисунок 4.</b> <span class="fig-name">Светофор после основного жима.</span> Последний рабочий подход определяет одно действие на следующую неделю; боль останавливает упражнение в любой момент.</figcaption></figure><div class="table-wrap" role="region" tabindex="0" aria-label="Светофор: что делать на следующей неделе"><table><thead><tr><th scope="col">Сигнал</th><th scope="col">Что было</th><th scope="col">Что делать дальше</th></tr></thead><tbody><tr><th scope="row" data-label="Сигнал">Зелёный</th><td data-label="Что было">Все повторы, последний подход не тяжелее RPE 8,5</td><td data-label="Что делать дальше">По плану</td></tr><tr><th scope="row" data-label="Сигнал">Жёлтый</th><td data-label="Что было">Все повторы, но последний подход на RPE 9</td><td data-label="Что делать дальше">Без прибавки: на следующей неделе схема подходов по плану, вес — сегодняшний</td></tr><tr><th scope="row" data-label="Сигнал">Красный</th><td data-label="Что было">Недобор повторов, помощь страхующего, RPE 9,5–10 или срыв техники</td><td data-label="Что делать дальше">На следующей неделе вес на 5 кг ниже сегодняшнего; дальше к плану — не больше +2,5 кг за тренировку</td></tr><tr><th scope="row" data-label="Сигнал">Два красных подряд</th><td data-label="Что было">В одном и том же дне две недели подряд</td><td data-label="Что делать дальше">Сдвигаются оба дня: неделя разгрузки по таблице недели 4 (в третьей волне — недели 8; плановая разгрузка засчитывается), затем повтор недели второго красного — основной жим (в дне A — подсобные) = план этой недели −5 кг, одиночный по своему правилу. Тест сдвигается на столько же; цикл — 13–14 недель</td></tr><tr><th scope="row" data-label="Сигнал">Боль</th><td data-label="Что было">Боль в плече, груди или локте</td><td data-label="Что делать дальше">Прекратить это упражнение. Тяжёлого жима и проходки нет, пока причина не ясна. Резкая боль, щелчок с болью или онемение — к врачу</td></tr></tbody></table></div><h3>Дискомфорт и боль</h3><p>Одно правило для всех упражнений. Неприятно, но не больно — снизить вес и амплитуду до комфортной. Боль или ощущение защемления — прекратить упражнение, а не менять траекторию под весом. Резкая боль, щелчок с болью или онемение — к врачу.</p><h3>Разгрузка: недели 4 и 8</h3><p>Основной жим — по таблице недели. Во вспомогательных упражнениях на один подход меньше (минимум два), вес примерно на 10 % ниже (узкий хват — на 15 %), повторы на нижней границе. Резинки и лесенка — как обычно.</p><h3>Двойная прогрессия во вспомогательных</h3><ol class="plain"><li>Стартовый вес — тот, с которым верхняя граница диапазона получилась бы с запасом 2. На нижней границе в первую неделю волны остаётся около 4 повторов, в диапазонах 8–12 и 12–15 — 5–6.</li><li>В таблицах недель — плановые повторы: каждая волна идёт от нижней границы к верхней. Это ориентир, а не обязательство.</li><li>Если плановые повторы не получаются во всех подходах, достаточно +1 повтора в одном-двух подходах; иначе повторяется прошлое задание.</li><li>Когда верхняя граница взята во всех подходах с запасом хотя бы 1, вес растёт на минимальный шаг: гантели 1–2 кг, штанга 2,5 кг, блок — одна плитка. Повторы снова с нижней границы.</li><li>Вес, подходы и повторы не растут одновременно.</li></ol><p>Пример: гантели 20 кг сделаны 10 / 10 / 10 с запасом — следующий шаг 22 кг и 8 / 8 / 8. Если 20 кг дают только 8 / 7 / 6, вес велик: взять 18 кг.</p><h3>Чего не делать</h3><ul class="plain"><li>Не проверять 90–95 кг до отказа на обычных тренировках.</li><li>Не ставить тяжёлый жим в суперсет.</li><li>Не делать тяжёлые отжимания на брусьях: с историей плеча они не нужны для цели.</li><li>Не делать разводки с глубоким растяжением грудных и передней части плеча.</li><li>Не жать максимум без страхующего или ограничителей.</li></ul></section><section class="sec flow" id="s14" aria-labelledby="s14-h"><header class="sec-head"><h2 id="s14-h"><span class="sec-num" aria-hidden="true">14</span><span class="vh">14. </span><span>Разминка, тяжёлый одиночный и подсобные</span></h2><p class="thesis">Разминка всегда легче первого рабочего веса и не утомляет, а тяжёлый одиночный — это потолок дня: его вес подтверждает контрольный подводящий.</p></header><h3>Разминка</h3><ul class="leads"><li><strong>Резинки.</strong> Разведение резинки перед собой 2 × 15, наружная ротация 2 × 12 на руку, тяга резинки к лицу 2 × 12; отдых 20–30 с.</li><li><strong>Гриф.</strong> 2 подхода по 10 с пустым грифом 20 кг.</li><li><strong>Лесенка.</strong> Примерно 45, 65, 80 и 90 % от первого рабочего веса дня, повторы 5 → 3 → 2 → 1. При рабочем весе до 60 кг — три ступени, около 50, 70 и 85 %. В день одиночного — около 45, 62, 75 и 85 % и контрольный (одиночный − 5 кг). Все веса лесенки выписаны в плане каждого дня.</li><li><strong>День B.</strong> Два последних подводящих — с паузой, как рабочие.</li><li><strong>Отдых.</strong> 1–2 минуты между подводящими, 2–3 минуты перед первым рабочим подходом, 3–4 минуты перед одиночным.</li><li><strong>Признак правильной разминки.</strong> Плечо тёплое, пампа нет, первые рабочие повторы быстрые.</li></ul><h3>Тяжёлый одиночный: недели 5–7 и 9–12</h3><p>Одиночный оценивается по скорости — так точнее, чем по ощущению запаса. При сомнении ставится более тяжёлая оценка; видео сбоку на телефон помогает оценивать честно.</p><div class="table-wrap" role="region" tabindex="0" aria-label="Тяжёлый одиночный: недели 5–7 и 9–12"><table><thead><tr><th scope="col">Оценка</th><th scope="col">Что видно</th><th scope="col">RPE</th></tr></thead><tbody><tr><th scope="row" data-label="Оценка">Быстро</th><td data-label="Что видно">Скорость как у подводящих, мёртвой точки не видно</td><td data-label="RPE">до 7,5</td></tr><tr><th scope="row" data-label="Оценка">Ровно</th><td data-label="Что видно">Медленнее подводящих, но без замедления в мёртвой точке</td><td data-label="RPE">около 8</td></tr><tr><th scope="row" data-label="Оценка">Тяжело</th><td data-label="Что видно">Заметное замедление в 5–15 см от груди, без остановки</td><td data-label="RPE">8,5–9</td></tr><tr><th scope="row" data-label="Оценка">С борьбой</th><td data-label="Что видно">Остановка, перекос или уход траектории</td><td data-label="RPE">9,5–10</td></tr></tbody></table></div><figure class="fig" id="fig-5"><div class="fig-frame" tabindex="0" role="button" aria-label="Рисунок 5. Тяжёлый одиночный. Открыть крупно"><svg class="fg" viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="f4-title f4-desc">
+  <title id="f4-title">Тяжёлый одиночный: как дойти и что дальше</title>
+  <desc id="f4-desc">Пример недели 7. Лесенка 20, 37,5, 52,5, 65, 72,5 кг и контрольный подводящий 80 кг — на 5 кг легче планового одиночного. Если контрольный идёт быстро, выполняется плановый одиночный 85 кг и подсобные 4 по 4 с 75 кг. Если медленно, одиночным дня становится 80 кг, подсобные 4 по 4 с 70 кг. Подсобные всегда считаются от фактического одиночного, а вес следующего одиночного зависит от скорости сегодняшнего.</desc>
+  <defs>
+    <marker id="f4-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="fill-muted" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="t-tag t-core" x="40" y="36">ЛЕСЕНКА · ПРИМЕР НЕДЕЛИ 7</text>
+
+  <!-- ступени разминки -->
+  <rect class="panel" x="40" y="278" width="56" height="52" rx="6"/>
+  <rect class="panel" x="110" y="232.5" width="56" height="97.5" rx="6"/>
+  <rect class="panel" x="180" y="193.5" width="56" height="136.5" rx="6"/>
+  <rect class="panel" x="250" y="161" width="56" height="169" rx="6"/>
+  <rect class="panel" x="320" y="141.5" width="56" height="188.5" rx="6"/>
+  <rect class="select" x="390" y="122" width="56" height="208" rx="6"/>
+  <rect class="fill-muted" x="30" y="330" width="430" height="1.5"/>
+
+  <text class="t-small" x="68" y="268" text-anchor="middle">20×10</text>
+  <text class="t-small" x="138" y="222" text-anchor="middle">37,5×5</text>
+  <text class="t-small" x="208" y="183" text-anchor="middle">52,5×3</text>
+  <text class="t-small" x="278" y="151" text-anchor="middle">65×2</text>
+  <text class="t-small" x="348" y="131" text-anchor="middle">72,5×1</text>
+  <text class="t-label" x="418" y="110" text-anchor="middle">80×1</text>
+  <text class="t-tag t-select" x="418" y="86" text-anchor="middle">КОНТРОЛЬНЫЙ</text>
+  <text class="t-small" x="418" y="68" text-anchor="middle">план − 5 кг</text>
+
+  <text class="t-small" x="40" y="356">до лесенки — резинки; гриф 2 подхода по 10</text>
+  <text class="t-small" x="40" y="378">отдых 1–2 мин; перед одиночным 3–4 мин</text>
+
+  <!-- решение -->
+  <path class="link" d="M452 200 H572" marker-end="url(#f4-arrow)"/>
+  <rect class="st-open" x="580" y="150" width="230" height="110" rx="14"/>
+  <text class="t-tag t-flow" x="600" y="180">РЕШАЕТ СКОРОСТЬ</text>
+  <text class="t-body" x="600" y="208">Контрольный идёт</text>
+  <text class="t-body" x="600" y="232">как подводящие?</text>
+
+  <path class="link" d="M810 180 C 838 180, 836 88, 852 88" marker-end="url(#f4-arrow)"/>
+  <rect class="fill-paper" x="822" y="112" width="34" height="22"/>
+  <text class="t-small" x="839" y="128" text-anchor="middle">да</text>
+  <path class="link" d="M810 232 C 838 232, 836 318, 852 318" marker-end="url(#f4-arrow)"/>
+  <rect class="fill-paper" x="818" y="268" width="42" height="22"/>
+  <text class="t-small" x="839" y="284" text-anchor="middle">нет</text>
+
+  <rect class="select" x="860" y="40" width="300" height="100" rx="14"/>
+  <text class="t-label" x="880" y="72">Одиночный 85 кг</text>
+  <text class="t-small" x="880" y="96">плановый вес — потолок дня</text>
+  <text class="t-body" x="880" y="124">подсобные 4 × 4 × 75</text>
+
+  <rect class="flow-soft" x="860" y="270" width="300" height="100" rx="14"/>
+  <text class="t-label" x="880" y="302">Одиночный дня — 80 кг</text>
+  <text class="t-small" x="880" y="326">85 сегодня не делается</text>
+  <text class="t-body" x="880" y="354">подсобные 4 × 4 × 70</text>
+
+  <!-- правило -->
+  <rect class="core-soft" x="40" y="410" width="1120" height="74" rx="14"/>
+  <text class="t-body" x="62" y="440">Подсобные = фактический одиночный −10 кг (по 4) или −7,5 кг (по 2–3); первый тяжелее RPE 8 → остальные −2,5.</text>
+  <text class="t-body" x="62" y="466">Следующий одиночный: быстро → по плану, не больше +2,5 · ровно → тот же вес · тяжело или с борьбой → −2,5 кг.</text>
+</svg><span class="fig-zoom" aria-hidden="true"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Открыть крупно</span></div><figcaption><b>Рисунок 5.</b> <span class="fig-name">Тяжёлый одиночный.</span> Контрольный подводящий на 5 кг легче плана решает, будет ли сегодня плановый одиночный; подсобные считаются от того одиночного, который получился.</figcaption></figure><ol class="steps"><li><p class="step-title">Лесенка до контрольного</p><p>Последний подводящий — на 5 кг легче одиночного дня. Если по правилу одиночный дня ниже плана, контрольный тоже ниже, а лишние верхние ступени лесенки убираются. Пример недели 6 при одиночном 80: … 62,5 × 2 → 70 × 1 → 75 × 1 (контрольный) → 80 → 4 × 4 × 70.</p></li><li><p class="step-title">Проверка скоростью</p><p>Контрольный идёт быстро — делается плановый одиночный. Если нет — планового одиночного сегодня нет: контрольный и есть одиночный дня.</p></li><li><p class="step-title">Вес следующего одиночного</p><p>Сегодняшний шёл быстро — на следующей неделе плановый вес, но не больше чем +2,5 кг к сегодняшнему. Ровно — тот же вес. Тяжело или с борьбой — на 2,5 кг меньше. Шаг +2,5 кг добавляет к одиночному почти единицу RPE, поэтому после «ровно» вес не растёт.</p></li><li><p class="step-title">Подсобные от фактического одиночного</p><p>Минус 10 кг по 4 повтора (недели 5–7), минус 7,5 кг по 2–3 повтора (недели 9–11). Первый подсобный ≈ RPE 7–7,5; если тяжелее 8 — остальные на 2,5 кг легче.</p></li></ol><h3>Таблица подсобных подходов</h3><div class="table-wrap wide" role="region" tabindex="0" aria-label="Таблица подсобных подходов"><table><thead><tr><th scope="col">Фактический одиночный</th><th scope="col">По 4 повтора: недели 5–7</th><th scope="col">По 3 повтора: недели 9–10</th><th scope="col">По 2 повтора: неделя 11</th></tr></thead><tbody><tr><th scope="row" data-label="Фактический одиночный">75 кг</th><td data-label="По 4 повтора: недели 5–7">65 кг</td><td data-label="По 3 повтора: недели 9–10">67,5 кг</td><td data-label="По 2 повтора: неделя 11">67,5 кг</td></tr><tr><th scope="row" data-label="Фактический одиночный">77,5 кг</th><td data-label="По 4 повтора: недели 5–7">67,5 кг</td><td data-label="По 3 повтора: недели 9–10">70 кг</td><td data-label="По 2 повтора: неделя 11">70 кг</td></tr><tr><th scope="row" data-label="Фактический одиночный">80 кг</th><td data-label="По 4 повтора: недели 5–7">70 кг</td><td data-label="По 3 повтора: недели 9–10">72,5 кг</td><td data-label="По 2 повтора: неделя 11">72,5 кг</td></tr><tr><th scope="row" data-label="Фактический одиночный">82,5 кг</th><td data-label="По 4 повтора: недели 5–7">72,5 кг</td><td data-label="По 3 повтора: недели 9–10">75 кг</td><td data-label="По 2 повтора: неделя 11">75 кг</td></tr><tr><th scope="row" data-label="Фактический одиночный">85 кг</th><td data-label="По 4 повтора: недели 5–7">75 кг</td><td data-label="По 3 повтора: недели 9–10">77,5 кг</td><td data-label="По 2 повтора: неделя 11">77,5 кг</td></tr><tr><th scope="row" data-label="Фактический одиночный">87,5 кг</th><td data-label="По 4 повтора: недели 5–7">—</td><td data-label="По 3 повтора: недели 9–10">80 кг</td><td data-label="По 2 повтора: неделя 11">80 кг</td></tr><tr><th scope="row" data-label="Фактический одиночный">90 кг</th><td data-label="По 4 повтора: недели 5–7">—</td><td data-label="По 3 повтора: недели 9–10">—</td><td data-label="По 2 повтора: неделя 11">82,5 кг</td></tr></tbody></table></div></section><section class="sec flow" id="s15" aria-labelledby="s15-h"><header class="sec-head"><h2 id="s15-h"><span class="sec-num" aria-hidden="true">15</span><span class="vh">15. </span><span>Жимы: техника и альтернативы</span></h2><p class="thesis">Четыре жима делят работу: обычный тренирует всё движение, пауза — старт от груди, узкий хват — трицепс, гантели под углом — объём для грудных и плеч.</p></header><figure class="fig" id="fig-6"><div class="fig-frame" tabindex="0" role="button" aria-label="Рисунок 6. Где застревает жим. Открыть крупно"><svg class="fg" viewBox="0 0 1200 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="f6-title f6-desc">
+  <title id="f6-title">Где застревает жим и что это тренирует</title>
+  <desc id="f6-desc">Боковой вид жима лёжа. Гриф касается низа груди и идёт вверх с небольшим уходом к плечам. Мёртвая точка — примерно 5–15 см от груди: здесь вместе работают грудные и трицепс. Жим с паузой учит старту от груди без отбива, обычный жим тренирует всё движение, жим узким хватом — выход из мёртвой точки и дожим, жим гантелей под углом добавляет объём грудным и передней дельте, тяги держат лопатки стабильными.</desc>
+  <defs>
+    <marker id="f6-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="fill-select" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="t-tag t-core" x="40" y="34">БОКОВОЙ ВИД</text>
+
+  <!-- зона мёртвой точки -->
+  <rect class="gap" x="200" y="245" width="420" height="59" rx="8"/>
+  <text class="t-label t-gap" x="604" y="270" text-anchor="end">мёртвая точка</text>
+  <text class="t-small" x="604" y="292" text-anchor="end">≈ 5–15 см от груди</text>
+
+  <!-- спортсмен -->
+  <rect class="panel" x="140" y="392" width="440" height="16" rx="6"/>
+  <path class="panel" d="M150 392 L112 352 Q104 344 96 352 L84 420 L100 422 L110 372 L140 404 Z"/>
+  <path class="panel" d="M170 392 C 190 372, 260 356, 330 352 C 400 350, 450 362, 480 392 Z"/>
+  <circle class="panel" cx="512" cy="374" r="20"/>
+
+  <!-- траектория грифа -->
+  <path class="link-select" d="M330 334 C 330 280, 342 232, 362 196 C 380 166, 394 146, 394 120" marker-end="url(#f6-arrow)"/>
+  <circle class="box" cx="330" cy="334" r="22"/>
+  <circle class="fill-muted" cx="330" cy="334" r="6"/>
+  <circle class="box" cx="396" cy="98" r="22" opacity=".55"/>
+  <circle class="fill-muted" cx="396" cy="98" r="6" opacity=".55"/>
+  <text class="t-small" x="604" y="344" text-anchor="end">старт: касание низа груди</text>
+  <text class="t-small" x="604" y="104" text-anchor="end">дожим: гриф над плечами</text>
+  <text class="t-small" x="420" y="214">путь к плечам, не строго вверх</text>
+
+  <!-- что тренирует -->
+  <rect class="core-soft" x="680" y="40" width="480" height="66" rx="12"/>
+  <text class="t-label" x="700" y="68">Жим с паузой 1 с</text>
+  <text class="t-small" x="700" y="92">старт от груди без отбива</text>
+  <text class="t-tag t-core" x="1140" y="68" text-anchor="end">СТАРТ</text>
+
+  <rect class="core-soft" x="680" y="116" width="480" height="66" rx="12"/>
+  <text class="t-label" x="700" y="144">Обычный жим</text>
+  <text class="t-small" x="700" y="168">всё движение в одном ритме</text>
+  <text class="t-tag t-core" x="1140" y="144" text-anchor="end">ВСЁ ДВИЖЕНИЕ</text>
+
+  <rect class="gap" x="680" y="192" width="480" height="66" rx="12"/>
+  <text class="t-label" x="700" y="220">Жим узким хватом</text>
+  <text class="t-small" x="700" y="244">трицепс: выход из мёртвой точки и дожим</text>
+  <text class="t-tag t-gap" x="1140" y="220" text-anchor="end">СЕРЕДИНА И ВЕРХ</text>
+
+  <rect class="core-soft" x="680" y="268" width="480" height="66" rx="12"/>
+  <text class="t-label" x="700" y="296">Жим гантелей под углом 15–30°</text>
+  <text class="t-small" x="700" y="320">грудные и передняя дельта: объём</text>
+  <text class="t-tag t-core" x="1140" y="296" text-anchor="end">ОБЪЁМ</text>
+
+  <rect class="panel" x="680" y="344" width="480" height="66" rx="12"/>
+  <text class="t-label" x="700" y="372">Тяги, задняя дельта, тяга к лицу</text>
+  <text class="t-small" x="700" y="396">лопатки сведены и стабильны весь подход</text>
+  <text class="t-tag t-muted" x="1140" y="372" text-anchor="end">ОПОРА</text>
+
+  <text class="t-body" x="40" y="456">Мёртвую точку проходят грудные и трицепс вместе — поэтому тренируется всё движение, а не одна мышца.</text>
+</svg><span class="fig-zoom" aria-hidden="true"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Открыть крупно</span></div><figcaption><b>Рисунок 6.</b> <span class="fig-name">Где застревает жим.</span> Мёртвая точка — примерно 5–15 см от груди. Каждый жим цикла отвечает за свою часть движения, тяги держат опору.</figcaption></figure><h3>Жим лёжа</h3><p>День A, первое упражнение. Главное движение цикла: тяжёлые подходы и одиночные выполняются только в нём.</p><ul class="leads"><li><strong>Постановка.</strong> Лечь так, чтобы глаза были под грифом. Хват полный — большой палец обхватывает гриф; ширина такая, чтобы в нижней точке предплечья стояли примерно вертикально. Если привычный хват комфортен для плеча, в этом цикле он не меняется. Лопатки сведены и опущены, верх спины прижат к скамье, небольшой прогиб в пояснице. Стопы давят в пол ещё до съёма.</li><li><strong>Съём.</strong> На прямых руках, со страхующим или в раме с ограничителями. Гриф выводится над плечами, секунда паузы.</li><li><strong>Опускание.</strong> Глубокий вдох и задержка дыхания. Гриф опускается за 1–2 секунды к низу или середине груди — в одну и ту же точку каждый повтор. Локти примерно 45–70° к корпусу, запястье над предплечьем, гриф лежит низко в ладони.</li><li><strong>Подъём.</strong> Без отбива: вверх и немного к плечам, по траектории в виде буквы J. Лопатки остаются сведёнными, ягодицы — на скамье, ноги продолжают давить в пол.</li><li><strong>Частые ошибки.</strong> Отрыв ягодиц, отбив от груди, локти под 90° в стороны, «плавающая» точка касания, расслабленные ноги.</li><li><strong>Советы.</strong> Каждый подход — одинаковая постановка. В тяжёлых подходах помогают мысли «разорвать гриф» и «отжать себя от грифа в скамью».</li><li><strong>Если плечо беспокоит.</strong> Чуть сузить хват и держать локти ближе к корпусу, около 45°. Боль — стоп (раздел <a href="#s13">13</a>).</li><li><strong>Альтернативы.</strong> Полноценной замены нет. Без страхующего — жим в силовой раме с ограничителями. Временно при неприятных ощущениях в нижней точке — жим лёжа на полу с весом на 10 % меньше.</li></ul><h3>Жим лёжа с паузой 1 с</h3><p>День B, первое упражнение. Учит начинать подъём от груди без отбива — там, где сейчас тяжелее всего.</p><ul class="leads"><li><strong>Выполнение.</strong> Как обычный жим, но гриф мягко касается груди и замирает примерно на секунду (счёт «раз-и»), затем жим.</li><li><strong>Пауза — без расслабления.</strong> Ноги давят в пол, лопатки сведены, грудь высокая, дыхание задержано. Гриф не «тонет» в груди.</li><li><strong>Частые ошибки.</strong> Пауза короче секунды, касание с отбивом, потеря напряжения спины на паузе, разная длина паузы от подхода к подходу.</li><li><strong>Советы.</strong> Партнёр может командовать «жми» — тогда пауза честная. Длина паузы одинаковая во всех подходах и неделях.</li><li><strong>Альтернативы.</strong> Жим с паузой 2 с с весом на 5 кг меньше. Пауза в 2–3 см над грудью без касания — только если касание вызывает боль.</li></ul><h3>Жим узким хватом</h3><p>День A, второе упражнение. Добавляет работу трицепсу — он помогает пройти мёртвую точку и дожать.</p><ul class="leads"><li><strong>Хват.</strong> Примерно на ширину ладони уже обычного, около ширины плеч. Кисти вплотную не ставятся: это перегружает запястья и локти.</li><li><strong>Выполнение.</strong> Касание чуть ниже, чем в обычном жиме; локти ближе к корпусу; та же постановка лопаток и ног; без отбива.</li><li><strong>Частые ошибки.</strong> Слишком узкий хват, заваленные назад запястья, разведённые локти.</li><li><strong>Прогрессия.</strong> 3 × 6 → 3 × 7 → 3 × 8, затем +2,5 кг и снова 3 × 6. Если 55 кг дают меньше шести чистых повторов или неприятны плечу или запястью — 50–52,5 кг.</li><li><strong>Альтернативы.</strong> Жим гантелей лёжа нейтральным хватом 3 × 8–10; жим лёжа на полу узким хватом.</li></ul><h3>Жим гантелей на наклонной скамье 15–30°</h3><p>День B, второе упражнение. Объём для грудных и передней дельты при небольшой нагрузке на суставы.</p><ul class="leads"><li><strong>Угол.</strong> 15–30°, не круче: при большем угле работу забирают плечи.</li><li><strong>Хват.</strong> Нейтральный (ладони друг к другу) или полуразвёрнутый — какой комфортнее плечу.</li><li><strong>Выполнение.</strong> Лопатки сведены; гантели опускаются до лёгкого растяжения, локти не проваливаются ниже комфортной амплитуды; жим вверх и чуть внутрь, без стука гантелей.</li><li><strong>Как взять и положить.</strong> Гантели ставятся на бёдра, затем — лечь вместе с ними и вывести наверх. В конце опустить их на бёдра, а не бросать в стороны из нижней точки.</li><li><strong>Плечо.</strong> Боль или ощущение защемления — повод прекратить упражнение, а не менять траекторию под весом.</li><li><strong>Альтернативы.</strong> Жим штанги на скамье 15–30°; жим в тренажёре под углом; жим гантелей лёжа нейтральным хватом.</li></ul></section><section class="sec flow" id="s16" aria-labelledby="s16-h"><header class="sec-head"><h2 id="s16-h"><span class="sec-num" aria-hidden="true">16</span><span class="vh">16. </span><span>Спина и плечи: техника и альтернативы</span></h2><p class="thesis">Тяги и упражнения для плеч не двигают штангу напрямую — они держат лопатки в одном положении весь подход и уравновешивают нагрузку на плечевой пояс.</p></header><h3>Тяга с упором грудью</h3><p>День A, суперсет 3а. Горизонтальная тяга без нагрузки на поясницу.</p><ul class="leads"><li><strong>Оборудование.</strong> Тренажёр с упором грудью, Т-гриф с упором или гантели лёжа грудью на наклонной скамье 30–45°.</li><li><strong>Выполнение.</strong> Грудь прижата к упору. Локти тянутся назад к поясу, в конце лопатки на долю секунды сводятся; руки опускаются под контролем до полного выпрямления.</li><li><strong>Частые ошибки.</strong> Рывок корпусом, отрыв груди от упора, тяга одними руками без движения лопаток.</li><li><strong>Вес.</strong> В неделю 1 — вес, с которым 10 повторов получились бы с запасом 2 (делается 8). Дальше двойная прогрессия (раздел <a href="#s13">13</a>).</li><li><strong>Альтернативы.</strong> Тяга гантели одной рукой с упором в скамью; тяга нижнего блока сидя; рычажный тренажёр для тяги.</li></ul><h3>Разведения на заднюю дельту</h3><p>День A, суперсет 3б. Задняя дельта и мышцы между лопатками — опора для сведённых лопаток в жиме.</p><ul class="leads"><li><strong>Выполнение.</strong> Корпус почти параллелен полу или лёжа грудью на наклонной скамье, руки чуть согнуты. Развести в стороны до линии плеч, опускать медленно.</li><li><strong>Частые ошибки.</strong> Раскачка, плечи к ушам, сгибание рук «в тягу».</li><li><strong>Вес.</strong> 6 кг в первой волне. После тяги в паре веса ниже привычных — это нормально.</li><li><strong>Альтернативы.</strong> Обратная «бабочка» в тренажёре; разведение с верхних блоков кроссовера; разведение резинки перед собой 3 × 20.</li></ul><h3>Тяга верхнего блока нейтральным хватом</h3><p>День B, суперсет 3а. Широчайшие держат низ лопаток и помогают стабильно опускать гриф.</p><ul class="leads"><li><strong>Выполнение.</strong> Узкая или средняя рукоять с параллельным хватом. Грудь вверх, лёгкий наклон назад; тяга к верху груди, локти вниз к бокам. Вверх — до прямых рук, не отпуская плечи к ушам.</li><li><strong>Частые ошибки.</strong> Раскачка корпусом, тяга за голову, неполное выпрямление.</li><li><strong>Вес.</strong> В неделю 1 — вес, с которым 12 повторов получились бы с запасом 2 (делается 8); диапазон 8–12.</li><li><strong>Альтернативы.</strong> Подтягивания параллельным хватом с резиной или в гравитроне; тяга одной рукой с верхнего блока; пуловер на блоке.</li></ul><h3>Подъём гантелей в стороны</h3><p>День B, суперсет 3б. Средняя дельта — объём для плеч без жимовой нагрузки на сустав.</p><ul class="leads"><li><strong>Выполнение.</strong> Стоя или сидя, корпус чуть наклонён вперёд. Гантели поднимаются в стороны до уровня плеч, локоть чуть впереди кисти; опускание медленное.</li><li><strong>Частые ошибки.</strong> Рывок корпусом, подъём выше плеч, плечи к ушам.</li><li><strong>Плечо.</strong> Без боли. Если неприятно — поднимать руки чуть впереди корпуса, примерно на 30°.</li><li><strong>Альтернативы.</strong> Подъём в сторону одной рукой с нижнего блока; тренажёр для средней дельты.</li></ul><h3>Тяга каната к лицу</h3><p>День B, суперсет 4а. Задняя дельта и наружные ротаторы — здоровье плеча при большом объёме жимов.</p><ul class="leads"><li><strong>Выполнение.</strong> Блок на уровне лица или чуть выше, канат хватом сверху. Тяга к переносице с разведением концов каната и разворотом кистей назад; секунда паузы, медленный возврат.</li><li><strong>Частые ошибки.</strong> Большой вес и тяга корпусом, локти ниже кистей.</li><li><strong>Вес.</strong> Лёгкий–средний: в неделю 1 — вес, с которым 15 повторов без рывков получились бы с запасом 2 (делается 12).</li><li><strong>Альтернативы.</strong> Тяга резинки к лицу; разведения на заднюю дельту.</li></ul></section><section class="sec flow" id="s17" aria-labelledby="s17-h"><header class="sec-head"><h2 id="s17-h"><span class="sec-num" aria-hidden="true">17</span><span class="vh">17. </span><span>Руки и резинки: техника и альтернативы</span></h2><p class="thesis">Руки и резинки — малые упражнения: они не должны утомлять перед основным жимом и требуют не рекордов, а аккуратной прогрессии.</p></header><h3>Разгибание рук на верхнем блоке</h3><p>День A, суперсет 4а. Трицепс — объём в дополнение к узкому жиму.</p><ul class="leads"><li><strong>Выполнение.</strong> Прямая или V-образная рукоять, локти прижаты к бокам и неподвижны. Разгибание до прямых рук, возврат до угла около 90° в локтях.</li><li><strong>Частые ошибки.</strong> Локти ходят вперёд-назад, корпус наваливается на вес.</li><li><strong>Вес.</strong> В неделю 1 — вес, с которым 12 повторов получились бы с запасом 2 (делается 10); диапазон 10–12.</li><li><strong>Альтернативы.</strong> Разгибание с канатом; разгибание одной рукой с блока; французский жим с гантелями лёжа — осторожно, если беспокоят локти.</li></ul><h3>Разгибание рук с канатом</h3><p>День B, суперсет 4б. Трицепс с другим хватом и в большем числе повторов.</p><ul class="leads"><li><strong>Выполнение.</strong> Канат, локти у боков; внизу концы каната разводятся в стороны. Плечо не двигается.</li><li><strong>Вес.</strong> В неделю 1 — вес, с которым 15 повторов получились бы с запасом 2 (делается 12); диапазон 12–15.</li><li><strong>Альтернативы.</strong> Разгибание с прямой рукоятью; разгибание с блока из-за головы — только если плечо не беспокоит.</li></ul><h3>Сгибание рук с гантелями</h3><p>День A, суперсет 4б. Бицепс — баланс локтевого сустава и устойчивость в тягах.</p><ul class="leads"><li><strong>Выполнение.</strong> Стоя, локти у корпуса. Подъём без раскачки с разворотом ладони вверх, опускание за 2 секунды.</li><li><strong>Вес.</strong> 12 кг на руку в первой волне.</li><li><strong>Альтернативы.</strong> Сгибание с изогнутым грифом; «молотки»; сгибание на нижнем блоке.</li></ul><h3>Резинки перед жимом</h3><p>Разминка обоих дней: подготовка лопаток и плеча без утомления.</p><ul class="leads"><li><strong>Разведение резинки перед собой, 2 × 15.</strong> Прямые руки на уровне плеч; резинка разводится до груди, лопатки сводятся.</li><li><strong>Наружная ротация, 2 × 12 на руку.</strong> Локоть прижат к боку и согнут под 90°, предплечье вращается наружу. Резинка очень лёгкая.</li><li><strong>Тяга резинки к лицу, 2 × 12.</strong> Как тяга каната к лицу, в лёгком темпе.</li><li><strong>Альтернативы.</strong> Без резинок — те же движения с блоком на минимальном весе или с гантелями 1–2 кг.</li></ul></section><section class="sec flow" id="s18" aria-labelledby="s18-h"><header class="sec-head"><h2 id="s18-h"><span class="sec-num" aria-hidden="true">18</span><span class="vh">18. </span><span>Почему так устроено и реалистичный горизонт</span></h2><p class="thesis">Правила ниже не дают циклу превратиться в еженедельный тест, а каждому сигналу дают одно действие.</p></header><div class="table-wrap" role="region" tabindex="0" aria-label="Почему так устроено и реалистичный горизонт"><table><thead><tr><th scope="col">Правило</th><th scope="col">Почему так</th></tr></thead><tbody><tr><th scope="row" data-label="Правило">Веса основного жима считаются от максимума 90 кг, отдельного тренировочного максимума нет</th><td data-label="Почему так">Потолок задают плановые одиночные и правило одиночного; следующий цикл считается от нового максимума</td></tr><tr><th scope="row" data-label="Правило">Плановый одиночный — потолок; следующий растёт только после быстрого</th><td data-label="Почему так">При максимуме 90 кг одиночные 85, 87,5 и 90 кг — это RPE около 8,5–9, 9,5 и 10, то есть почти тест. Без борьбы они получаются, только если максимум уже вырос; контрольный подводящий это проверяет</td></tr><tr><th scope="row" data-label="Правило">90 кг на неделе 11 — только после быстрого одиночного недели 10</th><td data-label="Почему так">Иначе это тест за неделю до теста</td></tr><tr><th scope="row" data-label="Правило">Ограничитель: первый подход тяжелее RPE 8 — остальные на 2,5 кг легче</th><td data-label="Почему так">Веса недель 10–11 рассчитаны с учётом роста максимума; если роста пока нет, ограничитель не даёт подходам стать предельными</td></tr><tr><th scope="row" data-label="Правило">День B недели 11 — 4 × 3 после 6 × 3 на неделе 10</th><td data-label="Почему так">Последняя тяжёлая неделя перед тестом: интенсивность сохраняется, объём снижается</td></tr><tr><th scope="row" data-label="Правило">Вход в тест зависит от недели 11</th><td data-label="Почему так">Первая попытка 90 кг — только если 90 на неделе 11 шли быстро или ровно; иначе старт с 87,5 и без 100 в этот день</td></tr><tr><th scope="row" data-label="Правило">Разминка — лесенка от рабочего веса дня</th><td data-label="Почему так">Подводящие всегда легче рабочих — даже при 65 кг в неделю 1 и 57,5 кг в разгрузку</td></tr><tr><th scope="row" data-label="Правило">Пн — A, Ср — ноги, Пт — B</th><td data-label="Почему так">Становая не стоит накануне жима, а тест в пятницу проходит через 4 дня после облегчённого дня A</td></tr><tr><th scope="row" data-label="Правило">Светофор с одним действием на каждый сигнал</th><td data-label="Почему так">Дни A и B ведутся независимо; цикл удлиняется до 13–14 недель только после двух красных подряд</td></tr><tr><th scope="row" data-label="Правило">Одно правило разгрузки для недель 4 и 8</th><td data-label="Почему так">Один подход меньше, вес на 10 % ниже, узкий хват — на 15 %</td></tr><tr><th scope="row" data-label="Правило">Стартовый вес вспомогательных — верхняя граница диапазона с запасом 2, калибровка в неделю 1 в обе стороны</th><td data-label="Почему так">Волна идёт от нижней границы к верхней за три недели, и к её концу запас остаётся около 2; калибровка поправляет осторожные 55 кг и 20 кг</td></tr><tr><th scope="row" data-label="Правило">Прибавка во вспомогательных — после верхней границы во всех подходах с запасом</th><td data-label="Почему так">Вес растёт на один минимальный шаг, когда задание выполнено уверенно, а не впритык</td></tr><tr><th scope="row" data-label="Правило">Готовность к 100 кг — по одиночному недели 11 и попыткам теста</th><td data-label="Почему так">Подходы до отказа в программе не делаются, поэтому видны только одиночные: 90 × 1 быстро — около 100 кг, а 90 × 1 тяжело — около 94–96 кг</td></tr><tr><th scope="row" data-label="Правило">Тест: подводящий 82,5 перед 90 и промежуточная попытка 92,5</th><td data-label="Почему так">Шаг к первой попытке — не больше 7,5 кг; 92,5 нужна, когда 90 прошли тяжело, но без борьбы</td></tr><tr><th scope="row" data-label="Правило">Отдых 3–5 минут и 4–6 подходов основного жима — рабочая практика</th><td data-label="Почему так">Для силы главное — тяжёлая нагрузка и регулярность; длинный отдых нужен, чтобы тяжёлые подходы были чистыми, а RPE — честным</td></tr><tr><th scope="row" data-label="Правило">Два жимовых дня — выбор под восстановление</th><td data-label="Почему так">Три и более тренировок верха в неделю дают больше силы, чем одна, а разница между двумя и тремя днями не установлена; третий лёгкий технический день в план не входит</td></tr></tbody></table></div><h3>Реалистичный горизонт</h3><p>Главная задача цикла — сделать 90 кг контролируемым одиночным. Максимум после цикла ориентировочно 95–100 кг: 95 — реалистично, 100 — верхняя граница, а не гарантия. Результат зависит от восстановления, массы тела, техники, питания и реакции на объём.</p><ul class="leads"><li><strong>Тест 95–97,5 кг.</strong> Следующий цикл строится так же, веса основного жима пересчитываются от нового максимума — при 95 кг это примерно +2,5–5 кг к каждому весу.</li><li><strong>Тест 100 кг.</strong> Максимум не повторяется: результат закрепляется через 90 × 2–3 и дальнейшую постепенную прогрессию.</li><li><strong>Тест 87,5–92,5 кг.</strong> Тот же план ещё раз, веса — от нового максимума; стоит проверить восстановление, сон и технику.</li></ul></section>
+  </main>
+
+  <footer class="doc-foot"><p>Жим лёжа · 12 недель · все веса основного жима — от 1ПМ 90 кг</p></footer>
+</div>
+
+<dialog class="viewer" id="viewer" aria-labelledby="viewer-title">
+  <div class="viewer-bar">
+    <p class="viewer-title" id="viewer-title"></p>
+    <button class="viewer-btn viewer-zoom" type="button" aria-pressed="false">Увеличить</button>
+    <button class="viewer-btn viewer-close" type="button">Закрыть</button>
+  </div>
+  <div class="viewer-stage"><div class="viewer-sheet"></div></div>
+</dialog>
+
+<script>
+(function () {
+  'use strict';
+  var doc = document;
+
+  /* ---------- Оглавление ---------- */
+  var nav = doc.querySelector('.toc');
+  var details = nav.querySelector('.toc-details');
+  var summary = details.querySelector('summary');
+  var wide = window.matchMedia('(min-width: 1180px)');
+
+  function syncToc() { details.open = wide.matches; }
+  syncToc();
+  if (wide.addEventListener) { wide.addEventListener('change', syncToc); }
+  else if (wide.addListener) { wide.addListener(syncToc); }
+
+  summary.addEventListener('click', function (e) { if (wide.matches) { e.preventDefault(); } });
+  nav.addEventListener('click', function (e) {
+    if (!wide.matches && e.target.closest && e.target.closest('.toc-list a')) { details.open = false; }
+  });
+  doc.addEventListener('click', function (e) {
+    if (!wide.matches && details.open && !nav.contains(e.target)) { details.open = false; }
+  });
+  details.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !wide.matches && details.open) {
+      details.open = false;
+      summary.focus();
+    }
+  });
+
+  var links = Array.prototype.slice.call(nav.querySelectorAll('.toc-list a'));
+  var sections = links.map(function (a) { return doc.getElementById(a.getAttribute('href').slice(1)); });
+  var current = nav.querySelector('.toc-current');
+  var active = -2;
+  var ticking = false;
+
+  function updateActive() {
+    ticking = false;
+    var line = wide.matches ? 160 : 120;
+    var idx = -1;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i] && sections[i].getBoundingClientRect().top - line <= 0) { idx = i; }
+    }
+    var root = doc.documentElement;
+    if (idx >= 0 && window.innerHeight + window.pageYOffset >= root.scrollHeight - 4) { idx = sections.length - 1; }
+    if (idx === active) { return; }
+    active = idx;
+    links.forEach(function (a, k) {
+      if (k === idx) { a.setAttribute('aria-current', 'location'); }
+      else { a.removeAttribute('aria-current'); }
+    });
+    current.textContent = idx >= 0 ? links[idx].querySelector('.toc-num').textContent + '. ' +
+      links[idx].querySelector('.toc-label').textContent : '';
+  }
+  function onScroll() {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(updateActive); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  updateActive();
+
+  /* ---------- Печать ---------- */
+  Array.prototype.forEach.call(doc.querySelectorAll('[data-print]'), function (btn) {
+    btn.addEventListener('click', function () { window.print(); });
+  });
+
+  /* ---------- Просмотр схемы крупно ---------- */
+  var dlg = doc.getElementById('viewer');
+  var stage = dlg.querySelector('.viewer-stage');
+  var sheet = dlg.querySelector('.viewer-sheet');
+  var title = doc.getElementById('viewer-title');
+  var zoomBtn = dlg.querySelector('.viewer-zoom');
+  var closeBtn = dlg.querySelector('.viewer-close');
+  var state = null;
+  var zoomed = false;
+
+  function layout() {
+    if (!state) { return; }
+    var vb = state.svg.viewBox && state.svg.viewBox.baseVal;
+    var ratio = vb && vb.height ? vb.width / vb.height : 1.6;
+    var natural = vb && vb.width ? vb.width : 1200;
+    var pad = 32;
+    var cs = window.getComputedStyle(stage);
+    var sw = stage.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) - pad;
+    var sh = stage.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom) - pad;
+    var fit = Math.max(200, Math.min(sw, sh * ratio));
+    var w = zoomed ? Math.max(natural, fit * 1.6) : fit;
+    sheet.style.width = Math.round(w + pad) + 'px';
+    zoomBtn.textContent = zoomed ? 'Вписать в экран' : 'Увеличить';
+    zoomBtn.setAttribute('aria-pressed', zoomed ? 'true' : 'false');
+  }
+
+  function openFigure(frame) {
+    if (state || typeof dlg.showModal !== 'function') { return; }
+    var svg = frame.querySelector('svg.fg');
+    if (!svg) { return; }
+    state = { frame: frame, svg: svg, next: svg.nextSibling, opener: frame };
+    sheet.appendChild(svg);
+    var fig = frame.closest('figure');
+    var num = fig.querySelector('figcaption b');
+    var name = fig.querySelector('.fig-name');
+    title.textContent = (num ? num.textContent + ' ' : '') + (name ? name.textContent : '');
+    zoomed = window.innerWidth < 760;
+    dlg.showModal();
+    layout();
+    stage.scrollTop = 0;
+    stage.scrollLeft = 0;
+    closeBtn.focus();
+  }
+
+  dlg.addEventListener('close', function () {
+    if (!state) { return; }
+    var s = state;
+    state = null;
+    s.frame.insertBefore(s.svg, s.next && s.next.parentNode === s.frame ? s.next : null);
+    sheet.style.width = '';
+    if (s.opener && s.opener.focus) { s.opener.focus(); }
+  });
+  stage.addEventListener('click', function (e) { if (e.target === stage) { dlg.close(); } });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) { dlg.close(); } });
+  closeBtn.addEventListener('click', function () { dlg.close(); });
+  zoomBtn.addEventListener('click', function () { zoomed = !zoomed; layout(); });
+  window.addEventListener('resize', layout);
+  window.addEventListener('beforeprint', function () { if (dlg.open) { dlg.close(); } });
+
+  Array.prototype.forEach.call(doc.querySelectorAll('.fig-frame'), function (frame) {
+    frame.addEventListener('click', function () { openFigure(frame); });
+    frame.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openFigure(frame); }
+    });
+  });
+})();
+
+</script>
+</body>
+</html>

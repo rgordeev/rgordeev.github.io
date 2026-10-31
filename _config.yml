@@ -1,8 +1,12 @@
-title: АДМИНИСТРИРОВАНИЕ POSTGRESQL
-description: Материалы курса по PostgreSQL от компании Postgres Professional
-google_analytics: 
-show_downloads: true
-theme: jekyll-theme-slate
+title: Роман Гордеев
+description: Личный сайт. Заметки, планы и подробные разборы.
+url: https://rgordeev.github.io
+lang: ru
+timezone: Europe/Moscow
 
-gems:
-  - jekyll-mentions
+# HTML-страницы автономны и публикуются без шаблонов и дополнительных плагинов.
+exclude:
+  - README.md
+  - scripts/
+  - publish/raw/
+  - publish/work/
